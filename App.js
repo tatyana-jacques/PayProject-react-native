@@ -9,6 +9,7 @@ import Login from "./src/pages/Login/Login"
 import Register from "./src/pages/Register/Register"
 import Address from "./src/pages/Address/Address"
 import Terms from "./src/pages/Terms/Terms"
+import Calendar from "./src/pages/Calendar/Calendar"
 
 const Stack = createStackNavigator ()
 
@@ -16,7 +17,7 @@ const Stack = createStackNavigator ()
 export default function App () {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Register">
+      <Stack.Navigator initialRouteName="Calendar">
         <Stack.Screen
         name="Initial"
         component = {Initial}
@@ -48,6 +49,13 @@ export default function App () {
         <Stack.Screen
         name="Terms"
         component = {Terms}
+        options = {{
+          headerShown: false
+        }}
+        />
+         <Stack.Screen
+        name="Calendar"
+        component = {Calendar}
         options = {{
           headerShown: false
         }}

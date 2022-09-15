@@ -13,7 +13,11 @@ import {Picker} from "@react-native-picker/picker"
 import { useState } from "react"
 
 
-export default function Address({ navigation }) {
+export default function Address({ route, navigation }) {
+
+
+    const {user} = route.params
+   
     
     const [cep, setCep] = useState("")
     const [street, setStreet] = useState("")
@@ -33,11 +37,8 @@ export default function Address({ navigation }) {
     }
 
     
-
-    function navigateToTerms (){
-        navigation.navigate("Terms")
-        console.warn (address)
-
+    function navigateToCalendar (){
+        navigation.navigate("Calendar", {user: user}, {address:address})
     }
 
    
@@ -138,7 +139,7 @@ export default function Address({ navigation }) {
                     <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Initial") })}>
                         <Text style={commonStyles.buttonText}>Voltar</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={commonStyles.littleButton} onPress={navigateToTerms }>
+                    <TouchableOpacity style={commonStyles.littleButton} onPress={navigateToCalendar }>
                         <Text style={commonStyles.buttonText}>Continuar</Text>
                     </TouchableOpacity>
                 </View>

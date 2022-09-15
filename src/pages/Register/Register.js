@@ -1,9 +1,19 @@
-import { StatusBar, SafeAreaView, Text, TouchableOpacity, View, TextInput, ScrollView, StyleSheet } from "react-native"
+import {
+    SafeAreaView,
+    ScrollView,
+    StatusBar,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from "react-native"
+
 import { commonStyles } from "../../styles/CommonStyles"
 import { useState } from "react"
 
-export default function Register({ navigation }) {
-    
+export default function Register({ route, navigation }) {
+
     const [name, setName] = useState("")
     const [phone, setPhone] = useState("")
     const [email, setEmail] = useState("")
@@ -19,20 +29,19 @@ export default function Register({ navigation }) {
         RG: RG,
         CPF: CPF,
         password: password
-
     }
 
 
-    function navigateToAddress(){
-        if (!name){
-            setErrorMessage ("Insira seu nome!")
+    function navigateToAddress() {
+        if (!name) {
+            setErrorMessage("Insira seu nome!")
         }
-        else if (!phone){
-            setErrorMessage ("Insira seu telefone!")
+        else if (!phone) {
+            setErrorMessage("Insira seu telefone!")
         }
 
         else {
-            navigation.navigate("Address", {user}) 
+            navigation.navigate("Address", { user: user })
         }
     }
 
@@ -50,7 +59,7 @@ export default function Register({ navigation }) {
                     value={name}
                     onChangeText={setName}
                 />
-               {errorMessage === "Insira seu nome!" && <View><Text style= {styles.errorText}>{errorMessage}</Text></View>}
+                {errorMessage === "Insira seu nome!" && <View><Text style={styles.errorText}>{errorMessage}</Text></View>}
 
                 <Text style={commonStyles.yellowText}>Telefone</Text>
                 <TextInput
@@ -61,7 +70,7 @@ export default function Register({ navigation }) {
                     value={phone}
                     onChangeText={setPhone}
                 />
-                {errorMessage === "Insira seu telefone!" && <View><Text style= {styles.errorText}>{errorMessage}</Text></View>}
+                {errorMessage === "Insira seu telefone!" && <View><Text style={styles.errorText}>{errorMessage}</Text></View>}
                 <Text style={commonStyles.yellowText}>E-mail</Text>
                 <TextInput
                     style={commonStyles.input}
@@ -111,10 +120,10 @@ export default function Register({ navigation }) {
     )
 }
 
-const styles = StyleSheet.create ({
-    errorText:{
+const styles = StyleSheet.create({
+    errorText: {
         fontSize: 16,
-        color:"#005f73"
+        color: "#005f73"
     }
 
 })

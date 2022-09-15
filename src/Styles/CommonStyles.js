@@ -39,6 +39,11 @@ export const commonStyles = StyleSheet.create ({
         paddingVertical:20,       
     },
 
+    errorText: {
+        fontSize: 16,
+        color: "#005f73"
+    },
+
     input: 
     {
         width: "80%",

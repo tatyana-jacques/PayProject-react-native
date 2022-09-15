@@ -1,6 +1,16 @@
-import {StatusBar, SafeAreaView, Text, TouchableOpacity, StyleSheet, Image, TextInput, ScrollView } from "react-native"
+import {
+    Image,
+    SafeAreaView,
+    ScrollView,
+    StatusBar,
+    StyleSheet, 
+    Text, 
+    TextInput,
+    TouchableOpacity } from "react-native"
+
 import {commonStyles} from "../../styles/CommonStyles"
 import {useState} from "react"
+
 import image from "../../../assets/logoPay.png"
 
 export default function Login ({navigation}) {

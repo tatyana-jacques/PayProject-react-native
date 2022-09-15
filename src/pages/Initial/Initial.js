@@ -1,11 +1,16 @@
-import {StatusBar, SafeAreaView, Text, TouchableOpacity, Dimensions, StyleSheet } from "react-native"
+import {
+  Dimensions, 
+  SafeAreaView,
+  StatusBar, 
+   Text, 
+   TouchableOpacity } from "react-native"
 import LottieView from "lottie-react-native"
 
 import Scanner from "../../../assets/scanning.json"
 import {commonStyles} from "../../styles/CommonStyles"
 
 
-export default function Initial ({navigation}) {
+export default function Initial ({route, navigation}) {
     return (
         <SafeAreaView style = {commonStyles.container}>
             <StatusBar/>
