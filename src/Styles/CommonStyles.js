@@ -1,18 +1,16 @@
 import {StyleSheet} from "react-native"
 
 export const commonStyles = StyleSheet.create ({
-    
-    container:
+
+    blueText:
     {
-        flex:1,
-        justifyContent: "flex-start",
-        alignItems: "center",
-        backgroundColor: "#fff",
-        paddingVertical:20,
-       
-        
-    
+        color: "#0a9396",
+        fontSize: 20,
+        fontWeight: "bold",
+        alignSelf: "center",
+
     },
+    
     button:
     {
         width: "70%",
@@ -24,34 +22,54 @@ export const commonStyles = StyleSheet.create ({
         marginVertical: 10,
         alignSelf: "center",
     },
+
     buttonText:
     {
         fontSize: 20,
         fontWeight: "bold",
         color: "#fff"
     },
+    
+    container:
+    {
+        flex:1,
+        justifyContent: "flex-start",
+        alignItems: "center",
+        backgroundColor: "#EBD9B2",
+        paddingVertical:20,       
+    },
 
     input: 
     {
         width: "80%",
-        height: 50,
-        backgroundColor: "#fff",
-        borderWidth:1,
-        borderColor:"#e9d8a6",
-        padding:10,
-        fontSize: 20,
+        height: 30,
+        backgroundColor: "#EAE5D4",
+        paddingHorizontal:10,
+        fontSize: 18,
         marginVertical: 10,
         alignSelf: "center",
-
+        color:"#005f73"
     },
 
-    blueText:
+    littleButton:
     {
-        color: "#0a9396",
-        fontSize: 20,
-        fontWeight: "bold",
-        alignSelf: "flex-start",
-        marginHorizontal:"10%"
+        width: "40%",
+        height: 50,
+        backgroundColor: "#0a9396",
+        borderRadius: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        marginVertical: 10,
+        alignSelf: "center",
+    },
+
+    littleButtonView:
+    {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-around",
+        width: "90%",
+        alignSelf: "center"
     },
 
     title:
@@ -62,4 +80,17 @@ export const commonStyles = StyleSheet.create ({
         alignSelf: "center",
         marginVertical:10,
     },
+
+    yellowText:
+    {
+        color: "#ee9b00",
+        fontSize: 18,
+        fontWeight: "bold",
+        alignSelf: "flex-start",
+        marginHorizontal:"10%"
+    },
+
+   
+
+   
 })

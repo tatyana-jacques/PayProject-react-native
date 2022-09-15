@@ -4,9 +4,11 @@ import {NavigationContainer} from "@react-navigation/native"
 import {createStackNavigator} from "@react-navigation/stack"
 
 
-import Home from "./src/Initial/Initial"
-import Login from "./src/Login/Login"
-import Register from "./src/Register/Register"
+import Initial from "./src/pages/Initial/Initial"
+import Login from "./src/pages/Login/Login"
+import Register from "./src/pages/Register/Register"
+import Address from "./src/pages/Address/Address"
+import Terms from "./src/pages/Terms/Terms"
 
 const Stack = createStackNavigator ()
 
@@ -14,10 +16,10 @@ const Stack = createStackNavigator ()
 export default function App () {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Register">
         <Stack.Screen
-        name="Home"
-        component = {Home}
+        name="Initial"
+        component = {Initial}
         options = {{
           headerShown: false
         }}
@@ -32,6 +34,20 @@ export default function App () {
         <Stack.Screen
         name="Register"
         component = {Register}
+        options = {{
+          headerShown: false
+        }}
+        />
+        <Stack.Screen
+        name="Address"
+        component = {Address}
+        options = {{
+          headerShown: false
+        }}
+        />
+        <Stack.Screen
+        name="Terms"
+        component = {Terms}
         options = {{
           headerShown: false
         }}
