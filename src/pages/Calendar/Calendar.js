@@ -12,7 +12,7 @@ import { useState } from "react"
 
 export default function Register({ route, navigation }) {
 
-    //const { user, address } = route.params
+    const { user, address } = route.params
 
     const [date, setDate] = useState("")
 

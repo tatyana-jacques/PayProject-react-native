@@ -14,18 +14,28 @@ import {
 import { commonStyles } from "../../styles/CommonStyles"
 import { useState } from "react"
 
-const [accept, setAccept] = useState(false)
+
 
 export default function Terms({ route, navigation }) {
+   
 
     const { user, address, date } = route.params
 
+    const [accept, setAccept] = useState(false)
+    const [userData, setUserData] = ("")
+
+   
     function registerUser() {
-        console.log(user, address, date)
-    }
-    function registerUser() {
-        navigation.navigate("Account", )
-        console.log(user, address, date)
+        if (accept===false)
+        {
+            alert ("Para prosseguir, você deve aceitar os termos!")
+        }
+        else{
+            navigation.navigate("User", {userData} )
+
+        }
+       
+       
     }
 
     return (
@@ -89,7 +99,7 @@ export default function Terms({ route, navigation }) {
                     <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Initial") })}>
                         <Text style={commonStyles.buttonText}>Voltar</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { registerUser })}>
+                    <TouchableOpacity style={commonStyles.littleButton} onPress={ registerUser }>
                         <Text style={commonStyles.buttonText}>Finalizar</Text>
                     </TouchableOpacity>
                 </View>
