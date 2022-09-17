@@ -8,7 +8,6 @@ export const commonStyles = StyleSheet.create ({
         fontSize: 20,
         fontWeight: "bold",
         alignSelf: "center",
-
     },
     
     button:
@@ -41,7 +40,17 @@ export const commonStyles = StyleSheet.create ({
 
     errorText: {
         fontSize: 16,
-        color: "#005f73"
+        color: "#005f73",
+        marginHorizontal: 5
+    },
+
+    errorView: {
+        flexDirection: "row",
+        width: "80%",
+        marginHorizontal: 10,
+        alignItems: "center",
+        alignSelf: "center",
+        marginBottom: 5,
     },
 
     input: 
@@ -94,8 +103,5 @@ export const commonStyles = StyleSheet.create ({
         alignSelf: "flex-start",
         marginHorizontal:"10%"
     },
-
-   
-
    
 })

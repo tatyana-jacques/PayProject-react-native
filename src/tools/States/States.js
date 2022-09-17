@@ -53,60 +53,60 @@ export const states = [
     },
     {
         name: "Pará",
-        value: "PA"
-    },
-    {
-        name:"Paraíba",
-        value: "PB"
-    },
-    {
-        name: "Paraná",
-        value: "PR"
+        initials: "PA"
     },
 
     {
+        name:"Paraíba",
+        initials: "PB"
+    },
+    {
+        name: "Paraná",
+        initials: "PR"
+    },
+    {
         name: "Pernambuco",
-        value: "PE"
+        initials: "PE"
     },
     {
         name: "Piauí",
-        value:"PI"
+        initials:"PI"
     },
     {
         name:"Rio de Janeiro",
-        value: "RJ"
+        initials: "RJ"
     },
     {
         name: "Rio Grande do Norte",
-        value: "RN",
+        initials: "RN",
     },
     {
         name: "Rio Grande do Sul",
-        value: "RS"
+        initials: "RS"
     },
     {
         name: "Rondônia",
-        value: "RO"
+        initials: "RO"
     },
     {
         name: "Roraima",
-        value: "RR"
+        initials: "RR"
     },
     {
         name: "Santa Catarina",
-        value: "SC"
+        initials: "SC"
     },
     {
         name: "São Paulo",
-        value: "SP"
+        initials: "SP"
     },
     {
         name: "Sergipe",
-        value: "SE"
+        initials: "SE"
     },
     {
         name: "Tocantins",
-        value: "TO"
+        initials: "TO"
     }
 
 ]

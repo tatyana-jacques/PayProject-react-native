@@ -11,6 +11,8 @@
     "ngrox": "npx ngrok http 3333"
   },
   "dependencies": {
+    "@mdi/js": "^7.0.96",
+    "@mdi/react": "^1.6.1",
     "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-native-picker/picker": "^2.4.4",
     "@react-navigation/bottom-tabs": "^6.4.0",

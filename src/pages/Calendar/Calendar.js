@@ -12,7 +12,9 @@ import { useState } from "react"
 
 export default function Register({ route, navigation }) {
 
-    const { user, address } = route.params
+    const { 
+        //user, 
+address } = route.params
 
     const [date, setDate] = useState("")
 
@@ -25,7 +27,8 @@ export default function Register({ route, navigation }) {
 
 
        // else {
-            navigation.navigate("Terms", { user: user }, { address: address }, { date: date })
+           //navigation.navigate("Terms", { user: user }, { address: address }, { date: date })
+                alert(address)
         //}
     }
 
@@ -42,7 +45,7 @@ export default function Register({ route, navigation }) {
                         marked:true,
                     monthTextColor: "#ee9b00",
                     selectedColor: "#",
-                        dotColor: "#9b2226"
+                        dotColor: "#ae2012"
                     },
                 }}
                 onDayPress = {(currentDate) => setDate (currentDate.dateString)}

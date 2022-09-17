@@ -1,8 +1,9 @@
 import "react-native-gesture-handler"
 
-import {NavigationContainer} from "@react-navigation/native"
-import {createStackNavigator} from "@react-navigation/stack"
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
+import {createStackNavigator} from "@react-navigation/stack"
+import {NavigationContainer} from "@react-navigation/native"
+import Icon from "@expo/vector-icons/MaterialCommunityIcons"
 
 import Address from "./src/pages/Address/Address"
 import Account from "./src/pages/Account/Account"
@@ -24,7 +25,12 @@ function PaymentNavigator () {
     <PaymentStack.Navigator>
       <PaymentStack.Screen
       name = "Scanner"
-      component = {Pokedex}/>
+    
+      component = {Scanner}
+      options={{
+        headerShown: false
+      }}
+      />
       <PaymentStack.Screen
       name = "Details"
       component = {Details}/>
@@ -36,26 +42,46 @@ function PaymentNavigator () {
 
 function UserNavigation (){
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+    initialRouteName="Account"
+    screenOptions={{
+      tabBarActiveTintColor: "#ee9b00",
+      tabBarInactiveTintColor: "#fff",
+      tabBarShowLabel: false,
+      tabBarStyle: {
+        backgroundColor: "#0a9396"
+        
+      }
+    
+    }}>
       <Tab.Screen 
       name= "Account"
       component = {Account}
+      
       options = {{
-        headerShown: false
+        tabBarIcon: ({color}) => (<Icon name="account" size={26} color= {color}/>),
+        headerShown: false,
+        show: false
       }}
       />
       <Tab.Screen 
       name= "PaidTickets"
       component = {PaidTickets}
       options = {{
-        headerShown: false
+        tabBarIcon: ({color}) => (<Icon name="playlist-check" size={26} color= {color}/>),
+        headerShown: false,
+        
+        
       }}
       />
       <Tab.Screen 
       name= "PaymentNavigator"
       component = {PaymentNavigator}
       options = {{
-        headerShown: false
+        tabBarIcon: ({color}) => (<Icon name="barcode-scan" size={26} color= {color}/>),
+        headerShown: false,
+        tabBarStyle: {display:"none"}
+        
       }}
       />
     </Tab.Navigator>
@@ -66,7 +92,7 @@ function UserNavigation (){
 export default function App () {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Initial">
+      <Stack.Navigator initialRouteName="Address">
         <Stack.Screen
         name="Initial"
         component = {Initial}
