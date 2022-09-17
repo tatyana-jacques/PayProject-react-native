@@ -1,4 +1,5 @@
 import {
+    Alert,
     SafeAreaView,
     ScrollView,
     Switch,
@@ -28,7 +29,9 @@ export default function Terms({ route, navigation }) {
     function registerUser() {
         if (accept===false)
         {
-            alert ("Para prosseguir, você deve aceitar os termos!")
+            Alert.alert(
+                "Atenção!",
+                "Para prosseguir, você deve aceitar os termos!")
         }
         else{
             navigation.navigate("User", {userData} )
@@ -96,7 +99,7 @@ export default function Terms({ route, navigation }) {
 
 
                 <View style={commonStyles.littleButtonView}>
-                    <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Initial") })}>
+                    <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Calendar") })}>
                         <Text style={commonStyles.buttonText}>Voltar</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={commonStyles.littleButton} onPress={ registerUser }>

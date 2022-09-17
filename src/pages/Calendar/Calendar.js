@@ -1,22 +1,49 @@
-import { 
-    SafeAreaView, 
+import {
+    Alert,
+    SafeAreaView,
     ScrollView,
-    StatusBar, 
+    StatusBar,
     StyleSheet,
-    Text, 
-    TouchableOpacity, 
-    View } from "react-native"
-import {Calendar} from "react-native-calendars"
+    Text,
+    TouchableOpacity,
+    View
+} from "react-native"
+import { Calendar } from "react-native-calendars"
+import { LocaleConfig } from "react-native-calendars"
 import { commonStyles } from "../../styles/CommonStyles"
 import { useState } from "react"
+import { format } from "date-fns"
+import ptBR from "date-fns/locale/pt-BR"
 
 export default function Register({ route, navigation }) {
 
-    const { 
-        //user, 
-address } = route.params
+    //const { user, address } = route.params
 
     const [date, setDate] = useState("")
+
+    LocaleConfig.locales["pt"] =
+    {
+        monthNames: [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"
+
+        ],
+        dayNames: ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"],
+        dayNamesShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex"],
+        today: "Hoje"
+    }
+
+    LocaleConfig.defaultLocale = "pt"
 
 
 
@@ -26,10 +53,28 @@ address } = route.params
         // }
 
 
-       // else {
-           //navigation.navigate("Terms", { user: user }, { address: address }, { date: date })
-                alert(address)
+        // else {
+        //navigation.navigate("Terms", { user: user }, { address: address }, { date: date })
+
         //}
+        const formatedDate = format(new Date(date), "dd 'de' MMMM  'de' yyyy", { locale: ptBR })
+
+        Alert.alert(
+            "Confirmar data:",
+            "Deseja salvar o dia " + formatedDate + " como data de cobrança?",
+            [
+                {
+                    text: "Não",
+                    onPress: (() => setDate(""))
+                },
+
+                {
+                    text: "Sim",
+                    onPress: (() => { navigation.navigate("Terms", { date: date }) })
+                }
+
+            ]
+        )
     }
 
     return (
@@ -37,32 +82,34 @@ address } = route.params
             <StatusBar />
             <ScrollView style={{ flex: 1, width: "100%" }}>
                 <Text style={commonStyles.title}>Qual a data da cobrança?</Text>
-                <Calendar 
-                style={styles.calendar}
-                markedDates={{
-                    [date]: {
-                        selected:true,
-                        marked:true,
-                    monthTextColor: "#ee9b00",
-                    selectedColor: "#",
-                        dotColor: "#ae2012"
-                    },
-                }}
-                onDayPress = {(currentDate) => setDate (currentDate.dateString)}
-                theme={{
-                    selectedDayTextColor: "#0a9396",
-                    todayTextColor: "#005f73",
+                <Calendar
+                    style={styles.calendar}
+                    LocaleConfig="pt"
+                    markedDates={{
+                        [date]: {
+                            selected: true,
+                            marked: true,
+                            monthTextColor: "#ee9b00",
+                            selectedColor: "#",
+                            dotColor: "#ae2012"
+                        },
+                    }}
+                    onDayPress={(currentDate) => setDate(currentDate.dateString)}
+                    theme={{
+                        selectedDayTextColor: "#0a9396",
+                        todayTextColor: "#ae2012",
 
-                    calendarBackground: "#fff",
-                    dayTextColor: "#ee9b00",
-                    arrowColor: "#fff",
-                    monthTextColor: "#ee9b00",
-                    weekTextColor: "#ee9b00",
+                        calendarBackground: "#fff",
+                        dayTextColor: "#ee9b00",
+                        arrowColor: "#ee9b00",
+                        monthTextColor: "#ee9b00",
 
-                }}
+
+
+                    }}
                 />
 
-        
+
 
                 <View style={commonStyles.littleButtonView}>
                     <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Initial") })}>
@@ -79,13 +126,12 @@ address } = route.params
 }
 
 const styles = StyleSheet.create({
-   calendar:
-   {
-    width: "90%",
-    alignSelf: "center",
-    borderRadius: 15,
-    marginVertical: 20,
+    calendar:
+    {
+        width: "90%",
+        alignSelf: "center",
+        marginVertical: 20,
 
-   }
+    }
 
 })

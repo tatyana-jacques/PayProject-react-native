@@ -157,7 +157,7 @@ export default function Address({ route, navigation }) {
                     selectedValue={state}
                     onValueChange={(value) => setState(value)}
                     style={styles.select}
-                    id={states.name}
+                    key={states.name}
                 >
                     {
                         states.map((state) => (
