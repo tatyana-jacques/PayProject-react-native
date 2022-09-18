@@ -11,16 +11,16 @@ import {
 import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import { Calendar } from "react-native-calendars"
 import { commonStyles } from "../../styles/CommonStyles"
-import { format } from "date-fns"
+import { format, parseISO  } from "date-fns"
 import { LocaleConfig } from "react-native-calendars"
 import ptBR from "date-fns/locale/pt-BR"
 import { useState } from "react"
 
 export default function Register({ route, navigation }) {
 
-    const { 
-        //user, 
-    address } = route.params
+    const {
+        user,
+        address } = route.params
 
     const [date, setDate] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
@@ -57,43 +57,38 @@ export default function Register({ route, navigation }) {
         }
 
         else {
+            const parseDate = parseISO(date)
 
-            const formatedDate = format(new Date(date), "dd 'de' MMMM  'de' yyyy", { locale: ptBR })
-            navigation.navigate(
-                                        "Terms",
-                                        { 
-                                        formatedDate: formatedDate,
-                                        address: address,
-                                     }
-                                        //{ user: user },
-                                       
-                                        )
+            const formatedDate = format (new Date(parseDate), "dd 'de' MMMM  'de' yyyy", { locale: ptBR })
 
-        //     Alert.alert(
-        //         "Confirmar data:",
-        //         "Deseja salvar o dia " + formatedDate + " como data de cobrança?",
-        //         [
-        //             {
-        //                 text: "Não",
-        //                 onPress: (() => setDate(""))
-        //             },
 
-        //             {
-        //                 text: "Sim",
-        //                 onPress: (() => {
-        //                     navigation.navigate(
-        //                         "Terms",
-        //                         { formatedDate: formatedDate },
-        //                         { user: user },
-        //                         { address: address })
-        //                 })
-        //             }
+            Alert.alert(
+                "Confirmar data:",
+                "Deseja salvar o dia " + formatedDate + " como data de cobrança?",
+                [
+                    {
+                        text: "Não",
+                        onPress: (() => setDate(""))
+                    },
 
-        //         ]
-        //     )
-        // }
-            }
+                    {
+                        text: "Sim",
+                        onPress: (() => {
+                            navigation.navigate(
+                                "Terms",
+                                {
+                                    date: date,
+                                    user: user,
+                                    address: address
+                                })
+                        })
+                    }
+
+                ]
+            )
+        }
     }
+
 
     return (
         <SafeAreaView style={commonStyles.container}>

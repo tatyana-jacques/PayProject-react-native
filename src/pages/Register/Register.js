@@ -105,7 +105,7 @@ export default function Register({ route, navigation }) {
                     style={commonStyles.input}
                     selectionColor="#94d2bd"
                     keyboardType="number-pad"
-                    maxLength={11}
+                    maxLength={15}
                     value={phone}
                     onChangeText={setPhone}
                 />

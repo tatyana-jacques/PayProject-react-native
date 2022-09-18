@@ -59,7 +59,7 @@ function UserNavigation (){
       component = {Account}
       
       options = {{
-        tabBarIcon: ({color}) => (<Icon name="account" size={26} color= {color}/>),
+        tabBarIcon: ({color}) => (<Icon name="account" size={36} color= {color}/>),
         headerShown: false,
         show: false
       }}
@@ -68,7 +68,7 @@ function UserNavigation (){
       name= "PaidTickets"
       component = {PaidTickets}
       options = {{
-        tabBarIcon: ({color}) => (<Icon name="playlist-check" size={26} color= {color}/>),
+        tabBarIcon: ({color}) => (<Icon name="playlist-check" size={36} color= {color}/>),
         headerShown: false,
         
         
@@ -78,7 +78,7 @@ function UserNavigation (){
       name= "PaymentNavigator"
       component = {PaymentNavigator}
       options = {{
-        tabBarIcon: ({color}) => (<Icon name="barcode-scan" size={26} color= {color}/>),
+        tabBarIcon: ({color}) => (<Icon name="barcode-scan" size={36} color= {color}/>),
         headerShown: false,
         tabBarStyle: {display:"none"}
         
@@ -92,7 +92,7 @@ function UserNavigation (){
 export default function App () {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Address">
+      <Stack.Navigator initialRouteName="Initial">
         <Stack.Screen
         name="Initial"
         component = {Initial}

@@ -10,61 +10,56 @@ import {
     View
 } from "react-native"
 
-
 import { API } from "../../services/Services"
 import { commonStyles } from "../../styles/CommonStyles"
 import { useState } from "react"
 
-
-
 export default function Terms({ route, navigation }) {
 
-
-    const { user, address, formatedDate } = route.params
+    const { user, address, date } = route.params
+    const {name, phone, email, RG, CPF, password} = user
+    const {cep, street, city, state, district, number, complement} = address
 
     const [accept, setAccept] = useState(false)
-    //const [userData, setUserData] = ("")
-
 
     function registerUser() {
-        // if (accept === false) {
-        //     Alert.alert(
-        //         "Atenção!",
-        //         "Para prosseguir, você deve aceitar os termos!" + user.name)
-        // }
-        // else {
+        if (accept === false) {
+            Alert.alert(
+                "Atenção!",
+                "Para prosseguir, você deve aceitar os termos!")
+        }
+        else {
            
-        //     fetch(API + "/users", {
-        //         method: "POST",
-        //         body: JSON.stringify({
-        //             fullname: user.name,
-        //                 // contact: user.phone,
-        //                 // email: user.email,
-        //                 // number_rg: user.RG,
-        //                 // cpf: user.CPF,
-        //                 // password: user.password,
-        //                 // address: {
-        //                 //     cep: address.cep,
-        //                 //     street: address.street,
-        //                 //     city: address.city,
-        //                 //     state: address.state,
-        //                 //     region: address.district,
-        //                 //     number: address.number,
-        //                 //     complement: address.complement
-        //                 //},
-        //             billing_day: date
-        //         }),
-        //         headers: {
-        //             "Content-type": "application/json"
-        //         }
-        //     })
-        //     .then (async () => {
-        //         Alert.alert ("Usuário cadastrado com sucesso!")
-        //         navigation.navigate("User", { date:date })
-        //     })
-        //     .catch (() => Alert.alert("Falha ao realizar o cadastro."))
-        // }
-        alert(address.cep)
+            fetch(API + "/users", {
+                method: "POST",
+                body: JSON.stringify({
+                    fullname: name,
+                        contact: phone,
+                        email: email,
+                        number_rg: RG,
+                        cpf: CPF,
+                        password: password,
+                        address: {
+                            cep: cep,
+                            street: street,
+                            city: city,
+                            state: state,
+                            region: district,
+                            number: number,
+                            complement: complement
+                        },
+                    billing_day: date
+                }),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+            .then (async () => {
+                Alert.alert ("Usuário cadastrado com sucesso!")
+                navigation.navigate("Login")
+            })
+            .catch (() => Alert.alert("Falha ao realizar o cadastro."))
+        }
     
     }
 
@@ -116,7 +111,7 @@ export default function Terms({ route, navigation }) {
                 <View style={styles.switchContainer}>
                     <Switch
                         value={accept}
-                        onValueChange={() => setAccept(true)}
+                        onValueChange={setAccept}
                         thumbColor={"#0a9396"}
                         trackColor={{ true: "#0a9396", false: "#EAE5D4" }}
                     />

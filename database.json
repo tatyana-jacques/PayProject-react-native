@@ -1,6 +1,100 @@
 {
   "users": [
-   
+    {
+      "fullname": "Maria Eduarda",
+      "contact": "4722550066",
+      "email": "eduarda@devinhouse.com",
+      "number_rg": "3468354",
+      "cpf": "02314452666",
+      "password": "eduarda",
+      "address": {
+        "cep": "88037540",
+        "street": "Rua Folhas Verdes",
+        "city": "Florianópolis",
+        "state": "SC",
+        "region": "Córrego Grande",
+        "number": "21",
+        "complement": "Casa 2"
+      },
+      "billing_day": "2022-09-18",
+      "id": 1
+    },
+    {
+      "fullname": "Rita Lee",
+      "contact": "11588666535",
+      "email": "rita@devinhouse.com",
+      "number_rg": "253465912",
+      "cpf": "88888888888",
+      "password": "rita",
+      "address": {
+        "cep": "01001001",
+        "street": "Praça da Sé",
+        "city": "São Paulo",
+        "state": "SP",
+        "region": "Sé",
+        "number": "566",
+        "complement": "lado par"
+      },
+      "billing_day": "2022-09-05",
+      "id": 2
+    },
+    {
+      "fullname": "Carlos Saura",
+      "contact": "48999865656",
+      "email": "saura@devinhouse.com",
+      "number_rg": "5689466675",
+      "cpf": "86594688468",
+      "password": "saura",
+      "address": {
+        "cep": "88062001",
+        "street": "Rodovia Admar Gonzaga",
+        "city": "Florianópolis",
+        "state": "SC",
+        "region": "Lagoa da Conceição",
+        "number": "252",
+        "complement": "de 3789/3790 ao fim"
+      },
+      "billing_day": "2022-11-12",
+      "id": 3
+    },
+    {
+      "fullname": "Sergio Dias",
+      "contact": "55666683838",
+      "email": "dias@devinhouse.com",
+      "number_rg": "56589465355",
+      "cpf": "86549464444",
+      "password": "dias",
+      "address": {
+        "cep": "88054320",
+        "street": "Rua Desembargador Rid Silva",
+        "city": "Florianópolis",
+        "state": "SC",
+        "region": "Canasvieiras",
+        "number": "56",
+        "complement": "Casa 5"
+      },
+      "billing_day": "2022-10-15",
+      "id": 4
+    },
+    {
+      "fullname": "Marta Magda",
+      "contact": "46835648495",
+      "email": "magda@devinhouse.com",
+      "number_rg": "56894356",
+      "cpf": "56598885694",
+      "password": "magda",
+      "address": {
+        "cep": "88060000",
+        "street": "Rodovia João Gualberto Soares",
+        "city": "Florianópolis",
+        "state": "SC",
+        "region": "São João do Rio Vermelho",
+        "number": "234",
+        "complement": "de 4001/4002 a 16999/17000"
+      },
+      "billing_day": "2022-09-12",
+      "id": 5
+    }
   ],
   "invoices": [],
   "debits": []

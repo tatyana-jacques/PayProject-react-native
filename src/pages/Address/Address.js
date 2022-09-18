@@ -18,8 +18,7 @@ import { useState, useEffect } from "react"
 
 export default function Address({ route, navigation }) {
 
-   // const { user } = route.params
-
+    const { user } = route.params
     const [cep, setCep] = useState("")
     const [city, setCity] = useState("")
     const [complement, setComplement] = useState("")
@@ -52,7 +51,7 @@ export default function Address({ route, navigation }) {
     }, [cep])
 
     function navigateToCalendar() {
-        if (cep<8) {
+        if (cep < 8) {
             setErrorMessage({
                 id: 1,
                 message: "Preencha o campo CEP!"
@@ -88,12 +87,12 @@ export default function Address({ route, navigation }) {
                 message: "Insira o número de seu endereço!"
             })
         }
-    
+
         else {
             navigation.navigate(
                 "Calendar",
-                //{ user: user },
                 {
+                    user: user,
                     address: {
                         cep: cep,
                         street: street,
@@ -158,11 +157,11 @@ export default function Address({ route, navigation }) {
                     selectedValue={state}
                     onValueChange={(value) => setState(value)}
                     style={styles.select}
-                   
+
                 >
                     {
                         states.map((state) => (
-                            <Picker.Item label={state.name} value={state.initials}  key={state.name} />
+                            <Picker.Item label={state.name} value={state.initials} key={state.name} />
                         ))
 
                     }
@@ -202,7 +201,6 @@ export default function Address({ route, navigation }) {
                 <TextInput
                     style={commonStyles.input}
                     selectionColor="#94d2bd"
-                    keyboardType="number-pad"
                     maxLength={20}
                     value={complement}
                     onChangeText={setComplement}
