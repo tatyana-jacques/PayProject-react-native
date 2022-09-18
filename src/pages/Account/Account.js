@@ -1,4 +1,3 @@
-import AsyncStorage from "@react-native-async-storage/async-storage"
 import {
     Dimensions,
     SafeAreaView,
@@ -11,6 +10,7 @@ import {
 } from "react-native"
 import { API } from "../../services/Services"
 import { commonStyles } from "../../styles/CommonStyles"
+import {getId} from "../../tools/GetId/GetId"
 import { useState, useEffect } from "react"
 
 
@@ -21,6 +21,7 @@ export default function Terms({ route, navigation }) {
     const [cpf, setCpf] = useState("")
     const [contact, setContact] = useState("")
     const [RG, setRG] = useState("")
+    getId(setId)
 
 
     useEffect(() => {
@@ -38,16 +39,6 @@ export default function Terms({ route, navigation }) {
             .catch(() => Alert.alert("Erro no carregamento dos dados."))}
 
     }, [id])
-
-
-    const getId = async () => {
-            const value = await AsyncStorage.getItem("@pay_app:id_result")
-            const parseValue = JSON.parse(value)
-            setId(parseValue)
-         
-}
-
-    getId()
   
 
     return (
@@ -57,7 +48,7 @@ export default function Terms({ route, navigation }) {
 
                 <Text style={commonStyles.title}>Dados da conta</Text>
 
-                <View style = {styles.view}>
+               <View style = {styles.view}>
 
                 <View style = {styles.textView}> 
                 <Text style={styles.blueText}>Nome: {name}</Text>

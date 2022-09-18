@@ -33,7 +33,11 @@ function PaymentNavigator () {
       />
       <PaymentStack.Screen
       name = "Details"
-      component = {Details}/>
+      component = {Details}
+      options={{
+        headerShown: false,
+        tabBarStyle: {display:"none"}
+      }}/>
 
     </PaymentStack.Navigator>
 
@@ -80,7 +84,7 @@ function UserNavigation (){
       options = {{
         tabBarIcon: ({color}) => (<Icon name="barcode-scan" size={36} color= {color}/>),
         headerShown: false,
-        tabBarStyle: {display:"none"}
+       
         
       }}
       />
