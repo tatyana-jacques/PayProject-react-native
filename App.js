@@ -92,7 +92,7 @@ function UserNavigation (){
 export default function App () {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Calendar">
+      <Stack.Navigator initialRouteName="Address">
         <Stack.Screen
         name="Initial"
         component = {Initial}

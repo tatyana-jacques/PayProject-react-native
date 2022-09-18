@@ -9,16 +9,16 @@ import {
     View
 } from "react-native"
 
+import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import { commonStyles } from "../../styles/CommonStyles"
 import { Picker } from "@react-native-picker/picker"
-import { useState, useEffect } from "react"
-import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import { states } from "../../tools/States/States"
+import { useState, useEffect } from "react"
 
 
 export default function Address({ route, navigation }) {
 
-    // const { user } = route.params
+   // const { user } = route.params
 
     const [cep, setCep] = useState("")
     const [city, setCity] = useState("")
@@ -100,7 +100,8 @@ export default function Address({ route, navigation }) {
                         city: city,
                         state: state,
                         district: district,
-                        number: number
+                        number: number,
+                        complement: complement
 
                     }
                 }
@@ -157,11 +158,11 @@ export default function Address({ route, navigation }) {
                     selectedValue={state}
                     onValueChange={(value) => setState(value)}
                     style={styles.select}
-                    key={states.name}
+                   
                 >
                     {
                         states.map((state) => (
-                            <Picker.Item label={state.name} value={state.initials} />
+                            <Picker.Item label={state.name} value={state.initials}  key={state.name} />
                         ))
 
                     }

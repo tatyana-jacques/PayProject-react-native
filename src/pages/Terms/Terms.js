@@ -11,34 +11,61 @@ import {
 } from "react-native"
 
 
-
+import { API } from "../../services/Services"
 import { commonStyles } from "../../styles/CommonStyles"
 import { useState } from "react"
 
 
 
 export default function Terms({ route, navigation }) {
-   
 
-    const { user, address, date } = route.params
+
+    const { user, address, formatedDate } = route.params
 
     const [accept, setAccept] = useState(false)
-    const [userData, setUserData] = ("")
+    //const [userData, setUserData] = ("")
 
-   
+
     function registerUser() {
-        if (accept===false)
-        {
-            Alert.alert(
-                "Atenção!",
-                "Para prosseguir, você deve aceitar os termos!")
-        }
-        else{
-            navigation.navigate("User", {userData} )
-
-        }
-       
-       
+        // if (accept === false) {
+        //     Alert.alert(
+        //         "Atenção!",
+        //         "Para prosseguir, você deve aceitar os termos!" + user.name)
+        // }
+        // else {
+           
+        //     fetch(API + "/users", {
+        //         method: "POST",
+        //         body: JSON.stringify({
+        //             fullname: user.name,
+        //                 // contact: user.phone,
+        //                 // email: user.email,
+        //                 // number_rg: user.RG,
+        //                 // cpf: user.CPF,
+        //                 // password: user.password,
+        //                 // address: {
+        //                 //     cep: address.cep,
+        //                 //     street: address.street,
+        //                 //     city: address.city,
+        //                 //     state: address.state,
+        //                 //     region: address.district,
+        //                 //     number: address.number,
+        //                 //     complement: address.complement
+        //                 //},
+        //             billing_day: date
+        //         }),
+        //         headers: {
+        //             "Content-type": "application/json"
+        //         }
+        //     })
+        //     .then (async () => {
+        //         Alert.alert ("Usuário cadastrado com sucesso!")
+        //         navigation.navigate("User", { date:date })
+        //     })
+        //     .catch (() => Alert.alert("Falha ao realizar o cadastro."))
+        // }
+        alert(address.cep)
+    
     }
 
     return (
@@ -89,7 +116,7 @@ export default function Terms({ route, navigation }) {
                 <View style={styles.switchContainer}>
                     <Switch
                         value={accept}
-                        onValueChange = {()=>setAccept(true)}
+                        onValueChange={() => setAccept(true)}
                         thumbColor={"#0a9396"}
                         trackColor={{ true: "#0a9396", false: "#EAE5D4" }}
                     />
@@ -99,10 +126,12 @@ export default function Terms({ route, navigation }) {
 
 
                 <View style={commonStyles.littleButtonView}>
-                    <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Calendar") })}>
+                    <TouchableOpacity style={commonStyles.littleButton} 
+                    onPress={(() => { navigation.navigate("Calendar") })}
+                    >
                         <Text style={commonStyles.buttonText}>Voltar</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={commonStyles.littleButton} onPress={ registerUser }>
+                    <TouchableOpacity style={commonStyles.littleButton} onPress={registerUser}>
                         <Text style={commonStyles.buttonText}>Finalizar</Text>
                     </TouchableOpacity>
                 </View>
@@ -122,14 +151,12 @@ const styles = StyleSheet.create({
         margin: 10,
         paddingHorizontal: 10,
         textAlign: "center"
-
     },
 
     textView:
     {
         alignItems: "center",
         justifyContent: "center",
-
     },
 
     switchContainer:
@@ -138,6 +165,4 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center"
     }
-
-
 })

@@ -93,6 +93,7 @@ export const commonStyles = StyleSheet.create ({
         fontWeight: "bold",
         alignSelf: "center",
         marginVertical:10,
+       
     },
 
     yellowText:

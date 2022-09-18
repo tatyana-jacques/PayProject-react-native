@@ -8,18 +8,22 @@ import {
     TouchableOpacity,
     View
 } from "react-native"
+import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import { Calendar } from "react-native-calendars"
-import { LocaleConfig } from "react-native-calendars"
 import { commonStyles } from "../../styles/CommonStyles"
-import { useState } from "react"
 import { format } from "date-fns"
+import { LocaleConfig } from "react-native-calendars"
 import ptBR from "date-fns/locale/pt-BR"
+import { useState } from "react"
 
 export default function Register({ route, navigation }) {
 
-    //const { user, address } = route.params
+    const { 
+        //user, 
+    address } = route.params
 
     const [date, setDate] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
 
     LocaleConfig.locales["pt"] =
     {
@@ -48,33 +52,47 @@ export default function Register({ route, navigation }) {
 
 
     function navigateToTerms() {
-        // if (!date) {
-        //     setErrorMessage("Insira uma data válida!")
+        if (!date) {
+            setErrorMessage("Insira uma data válida!")
+        }
+
+        else {
+
+            const formatedDate = format(new Date(date), "dd 'de' MMMM  'de' yyyy", { locale: ptBR })
+            navigation.navigate(
+                                        "Terms",
+                                        { 
+                                        formatedDate: formatedDate,
+                                        address: address,
+                                     }
+                                        //{ user: user },
+                                       
+                                        )
+
+        //     Alert.alert(
+        //         "Confirmar data:",
+        //         "Deseja salvar o dia " + formatedDate + " como data de cobrança?",
+        //         [
+        //             {
+        //                 text: "Não",
+        //                 onPress: (() => setDate(""))
+        //             },
+
+        //             {
+        //                 text: "Sim",
+        //                 onPress: (() => {
+        //                     navigation.navigate(
+        //                         "Terms",
+        //                         { formatedDate: formatedDate },
+        //                         { user: user },
+        //                         { address: address })
+        //                 })
+        //             }
+
+        //         ]
+        //     )
         // }
-
-
-        // else {
-        //navigation.navigate("Terms", { user: user }, { address: address }, { date: date })
-
-        //}
-        const formatedDate = format(new Date(date), "dd 'de' MMMM  'de' yyyy", { locale: ptBR })
-
-        Alert.alert(
-            "Confirmar data:",
-            "Deseja salvar o dia " + formatedDate + " como data de cobrança?",
-            [
-                {
-                    text: "Não",
-                    onPress: (() => setDate(""))
-                },
-
-                {
-                    text: "Sim",
-                    onPress: (() => { navigation.navigate("Terms", { date: date }) })
-                }
-
-            ]
-        )
+            }
     }
 
     return (
@@ -90,7 +108,7 @@ export default function Register({ route, navigation }) {
                             selected: true,
                             marked: true,
                             monthTextColor: "#ee9b00",
-                            selectedColor: "#",
+                            selectedColor: "#ee8b00",
                             dotColor: "#ae2012"
                         },
                     }}
@@ -98,18 +116,19 @@ export default function Register({ route, navigation }) {
                     theme={{
                         selectedDayTextColor: "#0a9396",
                         todayTextColor: "#ae2012",
-
                         calendarBackground: "#fff",
-                        dayTextColor: "#ee9b00",
+                        dayTextColor: "#0a9396",
                         arrowColor: "#ee9b00",
                         monthTextColor: "#ee9b00",
-
-
-
+                        textDisabledColor: "#94d2bd",
+                        textSectionTitleColor: "#ee9b00"
                     }}
                 />
 
-
+                {errorMessage &&
+                    <View style={commonStyles.errorView}>
+                        <AlertIcon />
+                        <Text style={commonStyles.errorText}>{errorMessage}</Text></View>}
 
                 <View style={commonStyles.littleButtonView}>
                     <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Initial") })}>
