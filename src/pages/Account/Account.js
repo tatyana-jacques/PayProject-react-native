@@ -48,7 +48,7 @@ export default function Terms({ route, navigation }) {
 
                 <Text style={commonStyles.title}>Dados da conta</Text>
 
-               <View style = {styles.view}>
+               <View style = {commonStyles.bigView}>
 
                 <View style = {styles.textView}> 
                 <Text style={styles.blueText}>Nome: {name}</Text>
@@ -84,12 +84,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "flex-start",
         margin: 10,
+        alignSelf: "flex-start"
     },
 
-    view: {
-        justifyContent: "space-between", 
-        height: Dimensions.get("screen").height * 0.65
-
-    }
 })
 

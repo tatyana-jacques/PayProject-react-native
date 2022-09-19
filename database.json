@@ -96,6 +96,27 @@
       "id": 5
     }
   ],
-  "invoices": [],
-  "debits": []
+  "invoices": [
+    {
+      "recipient": "EPP Energias do Mundo",
+      "amount": 230.23,
+      "date": "19 09 2022 17:24",
+      "code": 1234534,
+      "user_id": 2,
+      "cashback": "23.02",
+      "id": 1
+    }
+  ],
+  "debts": [
+    {
+      "id": 1234534,
+      "amount": 230.23,
+      "recipient": "EPP Energias do Mundo"
+    },
+    {
+      "id": 545434326,
+      "amount": 30.23,
+      "recipient": "DevInHouse Ltda"
+    }
+  ]
 }

@@ -1,6 +1,14 @@
-import {StyleSheet} from "react-native"
+import {StyleSheet, Dimensions} from "react-native"
 
 export const commonStyles = StyleSheet.create ({
+
+    
+    bigView: {
+        justifyContent: "space-between", 
+        alignItems: "center",
+        height: Dimensions.get("screen").height * 0.65
+
+    },
 
     blueText:
     {

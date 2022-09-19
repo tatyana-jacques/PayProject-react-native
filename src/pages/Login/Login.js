@@ -52,9 +52,6 @@ export default function Login({ navigation }) {
                 .catch(() => Alert.alert("Erro ao tentar logar!"))
         }
 
-
-
-
     }
 
 

@@ -1,4 +1,6 @@
 import {
+    Alert,
+    Dimensions,
     SafeAreaView,
     ScrollView,
     Switch,
@@ -6,11 +8,11 @@ import {
     StyleSheet,
     Text,
     TouchableOpacity,
-    View
+    View,
 } from "react-native"
-
-
+import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import {API} from "../../services/Services"
+import { BarCodeScanner } from "expo-barcode-scanner"
 import { commonStyles } from "../../styles/CommonStyles"
 import {getId} from "../../tools/GetId/GetId"
 import {useState, useEffect} from "react"
@@ -20,6 +22,10 @@ export default function Scanner ({ route, navigation }) {
 
     const [id, setId] = useState("")
     const [name, setName] = useState("")
+    const [button, setButton] = useState(true)
+    const [permission, setPermission] = useState("")
+    const [scanned, setScanned] = useState (false)
+    
     getId(setId)
     useEffect(() => {
         if (id)
@@ -32,6 +38,46 @@ export default function Scanner ({ route, navigation }) {
             .catch(() => Alert.alert("Erro no carregamento dos dados."))}
 
     }, [id])
+
+    const getPermission = async () => {
+        const {status} = await BarCodeScanner.requestPermissionsAsync()
+        alert (status)
+        setPermission (status==="granted" ? true : false)
+        if (status==="granted"){
+            setButton(false)
+        }
+    }
+
+    function getResult ({data}){
+        setScanned(true)
+        fetch (API + "/debts?id=" + data)
+        .then (async (response) => {
+            const data = await response.json ()
+            if (data.length===1) {
+                navigation.navigate ("Details", {
+                    recipient: data[0].recipient, 
+                    amount: data[0].amount,
+                    code: data[0].id,
+                    user_id: id
+                })
+            }
+            else {
+                Alert.alert ("Código inválido!")
+                setButton (true)
+                setScanned(false)
+            }
+        })
+        .catch(() => Alert.alert ("Erro ao tentar scannear."))
+    }
+    
+
+    function openCamera () {
+        setScanned(false)
+        setButton (false)
+        getPermission()
+    }
+
+
     return (
         <SafeAreaView style={commonStyles.container}>
             <StatusBar />
@@ -39,8 +85,37 @@ export default function Scanner ({ route, navigation }) {
 
                 <Text style={commonStyles.title}>Olá, {name}!</Text>
 
+                <View style = {{...commonStyles.bigView, justifyContent: "center"}}>
+
+                    {permission===false && <View style={commonStyles.errorView}>
+                        <AlertIcon />
+                        <Text style={commonStyles.errorText}>Permissão para câmera negada</Text></View>}
+                        {
+                    (permission===true && scanned===false) && 
+                   
+                    <BarCodeScanner
+                    onBarCodeScanned = {getResult}
+                    barCodeTypes ={[BarCodeScanner.Constants.BarCodeType.code39]}
+                    style= {{
+                        width: Dimensions.get ("screen"). width * 0.75,
+                        height: Dimensions.get ("screen").height * 0.6,
+                        margin: 10
+                    }}
+                    />
+                    
+                }
+                
+                {button===true && <TouchableOpacity style={commonStyles.button} onPress={getPermission}>
+                    <Text style={commonStyles.buttonText}>Scannear novo boleto</Text>
+                </TouchableOpacity>}
+
+               
+              
+                </View>
+
             </ScrollView>
         </SafeAreaView>
 
     )
 }
+

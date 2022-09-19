@@ -8,7 +8,7 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons"
 import Address from "./src/pages/Address/Address"
 import Account from "./src/pages/Account/Account"
 import Calendar from "./src/pages/Calendar/Calendar"
-import Details from "./src/pages/PaidTickets/PaidTickets"
+import Details from "./src/pages/Details/Details"
 import Initial from "./src/pages/Initial/Initial"
 import Login from "./src/pages/Login/Login"
 import PaidTickets from "./src/pages/PaidTickets/PaidTickets"
@@ -18,33 +18,34 @@ import Terms from "./src/pages/Terms/Terms"
 
 const Stack = createStackNavigator ()
 const Tab = createBottomTabNavigator()
-const PaymentStack = createStackNavigator ()
+const AccountNavigation = createStackNavigator ()
 
-function PaymentNavigator () {
+function UserNavigation () {
   return (
-    <PaymentStack.Navigator>
-      <PaymentStack.Screen
-      name = "Scanner"
-    
-      component = {Scanner}
+    <AccountNavigation.Navigator>
+      <AccountNavigation.Screen
+      name = "Payment"
+      component = {TabBarNavigation}
       options={{
         headerShown: false
       }}
       />
-      <PaymentStack.Screen
+
+      <AccountNavigation.Screen
       name = "Details"
       component = {Details}
       options={{
         headerShown: false,
         tabBarStyle: {display:"none"}
+        
       }}/>
 
-    </PaymentStack.Navigator>
+    </AccountNavigation.Navigator>
 
   )
 }
 
-function UserNavigation (){
+function TabBarNavigation (){
   return (
     <Tab.Navigator
     initialRouteName="Account"
@@ -53,7 +54,7 @@ function UserNavigation (){
       tabBarInactiveTintColor: "#fff",
       tabBarShowLabel: false,
       tabBarStyle: {
-        backgroundColor: "#0a9396"
+        backgroundColor: "#0a9396",
         
       }
     
@@ -65,7 +66,6 @@ function UserNavigation (){
       options = {{
         tabBarIcon: ({color}) => (<Icon name="account" size={36} color= {color}/>),
         headerShown: false,
-        show: false
       }}
       />
       <Tab.Screen 
@@ -75,17 +75,15 @@ function UserNavigation (){
         tabBarIcon: ({color}) => (<Icon name="playlist-check" size={36} color= {color}/>),
         headerShown: false,
         
-        
       }}
       />
       <Tab.Screen 
-      name= "PaymentNavigator"
-      component = {PaymentNavigator}
+      name= "Scanner"
+      component = {Scanner}
       options = {{
         tabBarIcon: ({color}) => (<Icon name="barcode-scan" size={36} color= {color}/>),
         headerShown: false,
        
-        
       }}
       />
     </Tab.Navigator>
