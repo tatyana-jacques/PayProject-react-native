@@ -70,7 +70,7 @@ export default function Details ({ route, navigation }) {
                 <TouchableOpacity style={commonStyles.button} onPress={toPay}>
                     <Text style={commonStyles.buttonText}>Pagar</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{...commonStyles.button, backgroundColor: "#ae2012"}} onPress={()=>alert(user_id)}>
+                <TouchableOpacity style={{...commonStyles.button, backgroundColor: "#ae2012"}} onPress={()=> navigation.navigate ("Account")}>
                     <Text style={commonStyles.buttonText}>Cancelar</Text>
                 </TouchableOpacity>
                 </View>

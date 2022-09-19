@@ -16,6 +16,7 @@ import { BarCodeScanner } from "expo-barcode-scanner"
 import { commonStyles } from "../../styles/CommonStyles"
 import {getId} from "../../tools/GetId/GetId"
 import {useState, useEffect} from "react"
+import { useIsFocused } from "@react-navigation/native"
 
 
 export default function Scanner ({ route, navigation }) {
@@ -24,7 +25,8 @@ export default function Scanner ({ route, navigation }) {
     const [name, setName] = useState("")
     const [button, setButton] = useState(true)
     const [permission, setPermission] = useState("")
-    const [scanned, setScanned] = useState (false)
+    const [scanned, setScanned] = useState (true)
+   
     
     getId(setId)
     useEffect(() => {
@@ -41,10 +43,13 @@ export default function Scanner ({ route, navigation }) {
 
     const getPermission = async () => {
         const {status} = await BarCodeScanner.requestPermissionsAsync()
-        alert (status)
+        //alert (status)
         setPermission (status==="granted" ? true : false)
         if (status==="granted"){
             setButton(false)
+        }
+        else {
+            setButton(true)
         }
     }
 
@@ -62,9 +67,10 @@ export default function Scanner ({ route, navigation }) {
                 })
             }
             else {
+               
                 Alert.alert ("Código inválido!")
-                setButton (true)
-                setScanned(false)
+                setButton (true)    
+                
             }
         })
         .catch(() => Alert.alert ("Erro ao tentar scannear."))
@@ -97,15 +103,16 @@ export default function Scanner ({ route, navigation }) {
                     onBarCodeScanned = {getResult}
                     barCodeTypes ={[BarCodeScanner.Constants.BarCodeType.code39]}
                     style= {{
-                        width: Dimensions.get ("screen"). width * 0.75,
-                        height: Dimensions.get ("screen").height * 0.6,
-                        margin: 10
+                        width: Dimensions.get ("screen"). width * 0.8,
+                        height: Dimensions.get ("screen").height * 0.7,
+                       
+                       
                     }}
                     />
                     
                 }
                 
-                {button===true && <TouchableOpacity style={commonStyles.button} onPress={getPermission}>
+                {button===true && <TouchableOpacity style={commonStyles.button} onPress={openCamera}>
                     <Text style={commonStyles.buttonText}>Scannear novo boleto</Text>
                 </TouchableOpacity>}
 
