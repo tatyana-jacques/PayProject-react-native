@@ -92,7 +92,7 @@ export default function Register({ route, navigation }) {
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar />
+            <StatusBar backgroundColor={"#0a9396"}/>
             <ScrollView style={{ flex: 1, width: "100%" }}>
                 <Text style={commonStyles.title}>Qual a data da cobrança?</Text>
                 <Calendar

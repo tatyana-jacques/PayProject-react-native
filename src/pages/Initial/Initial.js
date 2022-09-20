@@ -13,7 +13,7 @@ import {commonStyles} from "../../styles/CommonStyles"
 export default function Initial ({route, navigation}) {
     return (
         <SafeAreaView style = {commonStyles.container}>
-            <StatusBar/>
+            <StatusBar backgroundColor={"#0a9396"}/>
           <LottieView
           autoPlay
           style={{heigth: Dimensions.get ("screen").height * 0.5, width: "100%"}}

@@ -83,7 +83,7 @@ export default function Register({ route, navigation }) {
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar />
+            <StatusBar backgroundColor={"#0a9396"}/>
             <ScrollView style={{ flex: 1, width: "100%" }}>
                 <Text style={commonStyles.title}>Nova Conta</Text>
 
@@ -105,7 +105,7 @@ export default function Register({ route, navigation }) {
                     style={commonStyles.input}
                     selectionColor="#94d2bd"
                     keyboardType="number-pad"
-                    maxLength={15}
+                    maxLength={20}
                     value={phone}
                     onChangeText={setPhone}
                 />
@@ -133,7 +133,7 @@ export default function Register({ route, navigation }) {
                     style={commonStyles.input}
                     selectionColor="#94d2bd"
                     keyboardType="number-pad"
-                    maxLength={11}
+                    maxLength={15}
                     value={RG}
                     onChangeText={setRG}
                 />
@@ -147,7 +147,7 @@ export default function Register({ route, navigation }) {
                     style={commonStyles.input}
                     selectionColor="#94d2bd"
                     keyboardType="number-pad"
-                    maxLength={11}
+                    maxLength={14}
                     value={CPF}
                     onChangeText={setCPF}
                 />

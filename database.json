@@ -80,8 +80,8 @@
       "fullname": "Marta Magda",
       "contact": "46835648495",
       "email": "magda@devinhouse.com",
-      "number_rg": "56894356",
-      "cpf": "56598885694",
+      "number_rg": "5.689.435-6",
+      "cpf": "565.988.856-94",
       "password": "magda",
       "address": {
         "cep": "88060000",
@@ -94,17 +94,117 @@
       },
       "billing_day": "2022-09-12",
       "id": 5
+    },
+    {
+      "fullname": "Marco Antônio ",
+      "contact": "4956334275",
+      "email": "marco@devinhouse.com",
+      "number_rg": "2.895.496-0",
+      "cpf": "896.485.798-3",
+      "password": "marco",
+      "address": {
+        "cep": "88556435",
+        "street": "Rua das Acacias",
+        "city": "Macondo",
+        "state": "AP",
+        "region": "Pinheira",
+        "number": "56",
+        "complement": "Ap345"
+      },
+      "billing_day": "2022-10-10",
+      "id": 6
     }
   ],
   "invoices": [
     {
       "recipient": "EPP Energias do Mundo",
       "amount": 230.23,
-      "date": "19 09 2022 17:24",
+      "date": "19/05/2022 17:24",
       "code": 1234534,
       "user_id": 2,
       "cashback": "23.02",
       "id": 1
+    },
+    {
+      "recipient": "Ruido Rosa",
+      "amount": 670.4,
+      "date": "19/12/2022 21:20",
+      "code": 500634956,
+      "user_id": 2,
+      "cashback": "67.04",
+      "id": 2
+    },
+    {
+      "recipient": "Ruido Rosa",
+      "amount": 300.55,
+      "date": "20/09/2022 10:59",
+      "code": 2836039,
+      "user_id": 2,
+      "cashback": "30.06",
+      "id": 3
+    },
+    {
+      "recipient": "DevInHouse Ltda",
+      "amount": 30.23,
+      "date": "20/09/2022 16:35",
+      "code": 545434326,
+      "user_id": 6,
+      "cashback": "3.02",
+      "id": 4
+    },
+    {
+      "recipient": "Ruido Rosa",
+      "amount": 300.55,
+      "date": "20/09/2022 16:41",
+      "code": 2836039,
+      "user_id": 5,
+      "cashback": "30.06",
+      "id": 5
+    },
+    {
+      "recipient": "DevInHouse Ltda",
+      "amount": 103.23,
+      "date": "20/09/2022 16:43",
+      "code": 984720495,
+      "user_id": 5,
+      "cashback": "10.32",
+      "id": 6
+    },
+    {
+      "recipient": "DevInHouse Ltda",
+      "amount": 30.23,
+      "date": "20/09/2022 16:52",
+      "code": 545434326,
+      "user_id": 1,
+      "cashback": "3.02",
+      "id": 7
+    },
+    {
+      "recipient": "EPP",
+      "amount": 55.1,
+      "date": "20/09/2022 16:53",
+      "code": 984732456079,
+      "user_id": 1,
+      "cashback": "5.51",
+      "id": 8
+    },
+    {
+      "recipient": "Ruido Rosa",
+      "amount": 670.4,
+      "date": "20/09/2022 16:54",
+      "code": 500634956,
+      "user_id": 1,
+      "cashback": "67.04",
+      "id": 9
+    },
+    {
+      "recipient": "EPP Energias do Mundo",
+      "amount": 230.23,
+      "date": "20/09/2022 16:55",
+      "code": 1234534,
+      "user_id": 3,
+      "cashback": "23.02",
+      "id": 10
     }
   ],
   "debts": [
@@ -117,6 +217,26 @@
       "id": 545434326,
       "amount": 30.23,
       "recipient": "DevInHouse Ltda"
+    },
+    {
+      "id": 2836039,
+      "amount": 300.55,
+      "recipient": "Ruido Rosa"
+    },
+    {
+      "id": 984720495,
+      "amount": 103.23,
+      "recipient": "DevInHouse Ltda"
+    },
+    {
+      "id": 984732456079,
+      "amount": 55.1,
+      "recipient": "EPP"
+    },
+    {
+      "id": 500634956,
+      "amount": 670.4,
+      "recipient": "Ruido Rosa"
     }
   ]
 }

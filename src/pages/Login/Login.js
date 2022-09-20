@@ -57,7 +57,7 @@ export default function Login({ navigation }) {
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar />
+            <StatusBar backgroundColor={"#0a9396"}/>
             <ScrollView style={{ flex: 1, width: "100%" }}>
                 <Image source={image} style={styles.image} resizeMode="contain" />
                 <TextInput
@@ -66,7 +66,7 @@ export default function Login({ navigation }) {
                     placeholderTextColor="#94d2bd"
                     selectionColor="#94d2bd"
                     keyboardType="number-pad"
-                    maxLength={11}
+                    maxLength={15}
                     value={CPF}
                     onChangeText={setCPF}
                 />

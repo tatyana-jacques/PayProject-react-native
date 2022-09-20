@@ -1,5 +1,5 @@
 import {
-    Dimensions,
+
     SafeAreaView,
     ScrollView,
     StatusBar,
@@ -12,7 +12,6 @@ import { API } from "../../services/Services"
 import { commonStyles } from "../../styles/CommonStyles"
 import {getId} from "../../tools/GetId/GetId"
 import { useState, useEffect } from "react"
-
 
 export default function Terms({ route, navigation }) {
 
@@ -43,7 +42,7 @@ export default function Terms({ route, navigation }) {
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar />
+            <StatusBar backgroundColor={"#0a9396"}/>
             <ScrollView style={{ flex: 1, width: "100%" }}>
 
                 <Text style={commonStyles.title}>Dados da conta</Text>

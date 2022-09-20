@@ -65,7 +65,7 @@ export default function Terms({ route, navigation }) {
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar />
+            <StatusBar backgroundColor={"#0a9396"}/>
             <ScrollView style={{ flex: 1, width: "100%" }}>
 
                 <Text style={commonStyles.title}>Termos de uso</Text>

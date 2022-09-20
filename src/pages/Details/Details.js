@@ -23,8 +23,7 @@ export default function Details ({ route, navigation }) {
     const cashback = (amount *0.1).toFixed(2)
     const cashbackToCurrency = formatCurrency ({amount:cashback, code: "BRL"})[0]
     const amountToCurrency = formatCurrency ({amount:(amount.toFixed(2)), code: "BRL"})[0]
-    const date = format (new Date (), "dd MM yyyy HH:mm", { locale: ptBR })
-
+    const date = format (new Date (), "dd/MM/yyyy HH:mm", { locale: ptBR })
 
     function toPay(){
         fetch (API + "/invoices", {
@@ -46,12 +45,11 @@ export default function Details ({ route, navigation }) {
             navigation.navigate ("Account")
         })
         .catch (()=>Alert.alert("Falha ao realizar o pagamento."))
-
     }
     
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar />
+            <StatusBar backgroundColor={"#0a9396"}/>
             <ScrollView style={{ flex: 1, width: "100%" }}>
 
                 <View style = {styles.view}>
@@ -77,7 +75,6 @@ export default function Details ({ route, navigation }) {
 
                 </View>
 
-
             </ScrollView>
         </SafeAreaView>
 
@@ -91,8 +88,8 @@ const styles = StyleSheet.create ({
         borderColor: "#ee9b00",
         borderWidth: 1,
         alignSelf: "center"
-
     },
+
     blueText:
     {
         color: "#0a9396",
@@ -100,15 +97,12 @@ const styles = StyleSheet.create ({
         fontWeight: "bold",
         marginHorizontal: "10%",
         marginVertical: 10
-       
     },
 
     view: {
         width: "100%",
         height:  Dimensions.get ("screen").height * 0.8,
-        justifyContent: "space-around",
-       
+        justifyContent: "space-around",  
     }
 
-    
 })
