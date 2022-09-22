@@ -13,15 +13,21 @@ import {
 import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import {API} from "../../services/Services"
 import { commonStyles } from "../../styles/CommonStyles"
-import { useState } from "react"
+import { UserContext } from "../../contexts/UserContext"
+import { useState, useContext } from "react"
 
 import image from "../../../assets/logoPay.png"
-import AsyncStorage from "@react-native-async-storage/async-storage"
+//import AsyncStorage from "@react-native-async-storage/async-storage"
+
 
 export default function Login({ navigation }) {
+    
     const [CPF, setCPF] = useState("")
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
+    const { setId, setName, setCpf, setContact, setRG} = useContext(UserContext)
+
+
 
     function navigateToUser() {
         if (!CPF) {
@@ -41,7 +47,12 @@ export default function Login({ navigation }) {
                 .then(async (response) => {
                     const data = await response.json()
                     if (data.length === 1) {
-                        await AsyncStorage.setItem ("@pay_app:id_result", JSON.stringify(data[0].id))
+                        //await AsyncStorage.setItem ("@pay_app:id_result", JSON.stringify(data[0].id))
+                        setId (data[0].id)
+                        setName (data[0].fullname)
+                        setCpf (data[0].cpf)
+                        setContact (data[0].contact)
+                        setRG (data[0].number_rg)
                        navigation.navigate("User")
                     }
                           

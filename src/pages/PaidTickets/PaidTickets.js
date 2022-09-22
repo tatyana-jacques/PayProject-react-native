@@ -15,12 +15,14 @@ import ConvertDate from "../../tools/ConvertDate/ConvertDate"
 import { formatCurrency } from "react-native-format-currency"
 import { getId } from "../../tools/GetId/GetId"
 import { useIsFocused } from "@react-navigation/native"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import {UserContext } from "../../contexts/UserContext"
 
 
-export default function Payments({ route, navigation }) {
+export default function Payments() {
 
-    const [id, setId] = useState("")
+    //const [id, setId] = useState("")
+    const {id} = useContext(UserContext)
     const [list, setList] = useState([])
     const focusedScreen = useIsFocused()
 
@@ -30,7 +32,7 @@ export default function Payments({ route, navigation }) {
         }
     }, [focusedScreen])
 
-    getId(setId)
+    //getId(setId)
 
     function getList() {
         fetch(API + "/invoices?user_id=" + id)

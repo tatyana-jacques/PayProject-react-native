@@ -1,5 +1,4 @@
 import {
-
     SafeAreaView,
     ScrollView,
     StatusBar,
@@ -8,36 +7,38 @@ import {
     TouchableOpacity,
     View
 } from "react-native"
-import { API } from "../../services/Services"
+//import { API } from "../../services/Services"
 import { commonStyles } from "../../styles/CommonStyles"
-import {getId} from "../../tools/GetId/GetId"
-import { useState, useEffect } from "react"
+import {UserContext } from "../../contexts/UserContext"
+//import {getId} from "../../tools/GetId/GetId"
+import { useContext, useEffect } from "react"
 
 export default function Terms({ route, navigation }) {
 
-    const [id, setId] = useState("")
-    const [name, setName] = useState("")
-    const [cpf, setCpf] = useState("")
-    const [contact, setContact] = useState("")
-    const [RG, setRG] = useState("")
-    getId(setId)
+    // const [id, setId] = useState("")
+    // const [name, setName] = useState("")
+    // const [cpf, setCpf] = useState("")
+    // const [contact, setContact] = useState("")
+    // const [RG, setRG] = useState("")
+    // getId(setId)
 
+    const {name, cpf, contact, RG} = useContext(UserContext)
 
-    useEffect(() => {
-        if (id)
-        {
-        fetch(API + "/users?id=" + id)
-            .then(async (response) => {
-                const data = await response.json()
-                setName(data[0].fullname)
-                setCpf(data[0].cpf)
-                setContact(data[0].contact)
-                setRG(data[0].number_rg)
+    // useEffect(() => {
+    //     if (id)
+    //     {
+    //     fetch(API + "/users?id=" + id)
+    //         .then(async (response) => {
+    //             const data = await response.json()
+    //             setName(data[0].fullname)
+    //             setCpf(data[0].cpf)
+    //             setContact(data[0].contact)
+    //             setRG(data[0].number_rg)
 
-            })
-            .catch(() => Alert.alert("Erro no carregamento dos dados."))}
+    //         })
+    //         .catch(() => Alert.alert("Erro no carregamento dos dados."))}
 
-    }, [id])
+    // }, [id])
   
 
     return (

@@ -13,14 +13,16 @@ import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import {API} from "../../services/Services"
 import { BarCodeScanner } from "expo-barcode-scanner"
 import { commonStyles } from "../../styles/CommonStyles"
-import {getId} from "../../tools/GetId/GetId"
+//import {getId} from "../../tools/GetId/GetId"
 import { useIsFocused } from "@react-navigation/native"
-import {useState, useEffect} from "react"
+import {useState, useEffect, useContext} from "react"
+import {UserContext } from "../../contexts/UserContext"
 
-export default function Scanner ({ route, navigation }) {
+export default function Scanner ({ navigation }) {
 
-    const [id, setId] = useState("")
-    const [name, setName] = useState("")
+    // const [id, setId] = useState("")
+    // const [name, setName] = useState("")
+    const { name, id } = useContext(UserContext)
     const [button, setButton] = useState(true)
     const [permission, setPermission] = useState("")
     const [scanned, setScanned] = useState (true)
@@ -32,18 +34,18 @@ export default function Scanner ({ route, navigation }) {
         }
     }, [focusedScreen])
     
-    getId(setId)
-    useEffect(() => {
-        if (id)
-        {
-        fetch(API + "/users?id=" + id)
-            .then(async (response) => {
-                const data = await response.json()
-                setName(data[0].fullname)
-            })
-            .catch(() => Alert.alert("Erro no carregamento dos dados."))}
+    //getId(setId)
+    // useEffect(() => {
+    //     if (id)
+    //     {
+    //     fetch(API + "/users?id=" + id)
+    //         .then(async (response) => {
+    //             const data = await response.json()
+    //             setName(data[0].fullname)
+    //         })
+    //         .catch(() => Alert.alert("Erro no carregamento dos dados."))}
 
-    }, [id])
+    // }, [id])
 
     const getPermission = async () => {
         const {status} = await BarCodeScanner.requestPermissionsAsync()
@@ -106,11 +108,9 @@ export default function Scanner ({ route, navigation }) {
                     barCodeTypes ={[BarCodeScanner.Constants.BarCodeType.code39]}
                     style= {{
                         width: Dimensions.get ("screen"). width * 0.8,
-                        height: Dimensions.get ("screen").height * 0.7,
-                       
+                        height: Dimensions.get ("screen").height * 0.7,    
                     }}
                     />
-                    
                 }
                 
                 {button===true && <TouchableOpacity style={commonStyles.button} onPress={openCamera}>

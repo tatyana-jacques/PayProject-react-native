@@ -10,9 +10,9 @@ import {
 } from "react-native"
 import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import { Calendar } from "react-native-calendars"
+import CalendarConfig from "../../tools/LocaleConfig/LocaleConfig"
 import { commonStyles } from "../../styles/CommonStyles"
-import { format, parseISO  } from "date-fns"
-import { LocaleConfig } from "react-native-calendars"
+import { format, parseISO } from "date-fns"
 import ptBR from "date-fns/locale/pt-BR"
 import { useState } from "react"
 
@@ -25,30 +25,8 @@ export default function Register({ route, navigation }) {
     const [date, setDate] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
 
-    LocaleConfig.locales["pt"] =
-    {
-        monthNames: [
-            "Janeiro",
-            "Fevereiro",
-            "Março",
-            "Abril",
-            "Maio",
-            "Junho",
-            "Julho",
-            "Agosto",
-            "Setembro",
-            "Outubro",
-            "Novembro",
-            "Dezembro"
-
-        ],
-        dayNames: ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"],
-        dayNamesShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex"],
-        today: "Hoje"
-    }
-
-    LocaleConfig.defaultLocale = "pt"
-
+    
+   CalendarConfig()
 
 
     function navigateToTerms() {
@@ -59,7 +37,7 @@ export default function Register({ route, navigation }) {
         else {
             const parseDate = parseISO(date)
 
-            const formatedDate = format (new Date(parseDate), "dd 'de' MMMM  'de' yyyy", { locale: ptBR })
+            const formatedDate = format(new Date(parseDate), "dd 'de' MMMM  'de' yyyy", { locale: ptBR })
 
 
             Alert.alert(
@@ -83,18 +61,18 @@ export default function Register({ route, navigation }) {
                                 })
                         })
                     }
-
                 ]
             )
         }
     }
 
-
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar backgroundColor={"#0a9396"}/>
+            <StatusBar backgroundColor={"#0a9396"} />
             <ScrollView style={{ flex: 1, width: "100%" }}>
+
                 <Text style={commonStyles.title}>Qual a data da cobrança?</Text>
+
                 <Calendar
                     style={styles.calendar}
                     LocaleConfig="pt"
@@ -123,7 +101,8 @@ export default function Register({ route, navigation }) {
                 {errorMessage &&
                     <View style={commonStyles.errorView}>
                         <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage}</Text></View>}
+                        <Text style={commonStyles.errorText}>{errorMessage}</Text>
+                    </View>}
 
                 <View style={commonStyles.littleButtonView}>
                     <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Initial") })}>
@@ -145,7 +124,5 @@ const styles = StyleSheet.create({
         width: "90%",
         alignSelf: "center",
         marginVertical: 20,
-
     }
-
 })

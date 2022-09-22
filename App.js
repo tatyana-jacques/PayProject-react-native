@@ -15,35 +15,12 @@ import PaidTickets from "./src/pages/PaidTickets/PaidTickets"
 import Register from "./src/pages/Register/Register"
 import Scanner from "./src/pages/Scanner/Scanner"
 import Terms from "./src/pages/Terms/Terms"
+import UserProvider from "./src/contexts/UserContext"
 
 const Stack = createStackNavigator ()
 const Tab = createBottomTabNavigator()
 const AccountNavigation = createStackNavigator ()
 
-function UserNavigation () {
-  return (
-    <AccountNavigation.Navigator>
-      <AccountNavigation.Screen
-      name = "Payment"
-      component = {TabBarNavigation}
-      options={{
-        headerShown: false
-      }}
-      />
-
-      <AccountNavigation.Screen
-      name = "Details"
-      component = {Details}
-      options={{
-        headerShown: false,
-        tabBarStyle: {display:"none"}
-        
-      }}/>
-
-    </AccountNavigation.Navigator>
-
-  )
-}
 
 function TabBarNavigation (){
   return (
@@ -90,10 +67,36 @@ function TabBarNavigation (){
   )
 }
 
+function UserNavigation () {
+  return (
+    <AccountNavigation.Navigator>
+      <AccountNavigation.Screen
+      name = "Payment"
+      component = {TabBarNavigation}
+      options={{
+        headerShown: false
+      }}
+      />
+
+      <AccountNavigation.Screen
+      name = "Details"
+      component = {Details}
+      options={{
+        headerShown: false,
+        tabBarStyle: {display:"none"}
+        
+      }}/>
+
+    </AccountNavigation.Navigator>
+
+  )
+}
+
 
 export default function App () {
   return (
     <NavigationContainer>
+       <UserProvider>
       <Stack.Navigator initialRouteName="Initial">
         <Stack.Screen
         name="Initial"
@@ -148,7 +151,7 @@ export default function App () {
 
       </Stack.Navigator>
 
-
+      </UserProvider>
     </NavigationContainer>
   )
 }

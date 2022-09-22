@@ -113,6 +113,25 @@
       },
       "billing_day": "2022-10-10",
       "id": 6
+    },
+    {
+      "fullname": "Ana Martha",
+      "contact": "41569843444",
+      "email": "ana@devinhouse.com",
+      "number_rg": "2.894.895-2",
+      "cpf": "659.894.562-4",
+      "password": "martha",
+      "address": {
+        "cep": "81170210",
+        "street": "Rua 1",
+        "city": "Curitiba",
+        "state": "PR",
+        "region": "Cidade Industrial",
+        "number": "54",
+        "complement": "(Moradias Arroio)"
+      },
+      "billing_day": "2022-10-31",
+      "id": 7
     }
   ],
   "invoices": [
@@ -205,6 +224,15 @@
       "user_id": 3,
       "cashback": "23.02",
       "id": 10
+    },
+    {
+      "recipient": "EPP",
+      "amount": 55.1,
+      "date": "22/09/2022 16:10",
+      "code": 984732456079,
+      "user_id": 2,
+      "cashback": "5.51",
+      "id": 11
     }
   ],
   "debts": [
