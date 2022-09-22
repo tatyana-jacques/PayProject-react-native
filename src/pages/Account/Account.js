@@ -40,7 +40,6 @@ export default function Terms({ route, navigation }) {
 
     // }, [id])
   
-
     return (
         <SafeAreaView style={commonStyles.container}>
             <StatusBar backgroundColor={"#0a9396"}/>
