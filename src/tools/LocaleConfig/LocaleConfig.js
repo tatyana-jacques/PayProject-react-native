@@ -1,6 +1,6 @@
 import { LocaleConfig } from "react-native-calendars"
 
-export default function CalendarConfig (){
+export default function CalendarConfig() {
     LocaleConfig.locales["pt"] =
     {
         monthNames: [

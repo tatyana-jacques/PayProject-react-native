@@ -13,15 +13,12 @@ import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import {API} from "../../services/Services"
 import { BarCodeScanner } from "expo-barcode-scanner"
 import { commonStyles } from "../../styles/CommonStyles"
-//import {getId} from "../../tools/GetId/GetId"
 import { useIsFocused } from "@react-navigation/native"
 import {useState, useEffect, useContext} from "react"
 import {UserContext } from "../../contexts/UserContext"
 
 export default function Scanner ({ navigation }) {
 
-    // const [id, setId] = useState("")
-    // const [name, setName] = useState("")
     const { name, id } = useContext(UserContext)
     const [button, setButton] = useState(true)
     const [permission, setPermission] = useState("")
@@ -31,21 +28,9 @@ export default function Scanner ({ navigation }) {
     useEffect (()=> {
         if (focusedScreen===true) {
             setButton(true)
+            setScanned (true)
         }
     }, [focusedScreen])
-    
-    //getId(setId)
-    // useEffect(() => {
-    //     if (id)
-    //     {
-    //     fetch(API + "/users?id=" + id)
-    //         .then(async (response) => {
-    //             const data = await response.json()
-    //             setName(data[0].fullname)
-    //         })
-    //         .catch(() => Alert.alert("Erro no carregamento dos dados."))}
-
-    // }, [id])
 
     const getPermission = async () => {
         const {status} = await BarCodeScanner.requestPermissionsAsync()
