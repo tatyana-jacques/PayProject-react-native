@@ -132,6 +132,25 @@
       },
       "billing_day": "2022-10-31",
       "id": 7
+    },
+    {
+      "fullname": "Pedro Garcia",
+      "contact": "5689465394",
+      "email": "pedro@devinhouse.com",
+      "number_rg": "5649865",
+      "cpf": "56894356894",
+      "password": "pedro",
+      "address": {
+        "cep": "88062002",
+        "street": "Estrada Sertão do Assopro",
+        "city": "Florianópolis",
+        "state": "SC",
+        "region": "Lagoa da Conceição",
+        "number": "864",
+        "complement": ""
+      },
+      "billing_day": "2022-09-22",
+      "id": 8
     }
   ],
   "invoices": [
@@ -233,6 +252,24 @@
       "user_id": 2,
       "cashback": "5.51",
       "id": 11
+    },
+    {
+      "recipient": "EPP",
+      "amount": 55.1,
+      "date": "23/09/2022 14:08",
+      "code": 984732456079,
+      "user_id": 2,
+      "cashback": "5.51",
+      "id": 12
+    },
+    {
+      "recipient": "Ruido Rosa",
+      "amount": 300.55,
+      "date": "23/09/2022 16:18",
+      "code": 2836039,
+      "user_id": 8,
+      "cashback": "30.06",
+      "id": 13
     }
   ],
   "debts": [

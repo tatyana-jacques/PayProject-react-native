@@ -10,7 +10,7 @@ import {
     View
 } from "react-native"
 
-import { API } from "../../services/Services"
+import api from "../../services/api"
 import { commonStyles } from "../../styles/CommonStyles"
 import { useState } from "react"
 
@@ -30,29 +30,23 @@ export default function Terms({ route, navigation }) {
         }
         else {
 
-            fetch(API + "/users", {
-                method: "POST",
-                body: JSON.stringify({
-                    fullname: name,
-                    contact: phone,
-                    email: email,
-                    number_rg: RG,
-                    cpf: CPF,
-                    password: password,
-                    address: {
-                        cep: cep,
-                        street: street,
-                        city: city,
-                        state: state,
-                        region: district,
-                        number: number,
-                        complement: complement
-                    },
-                    billing_day: date
-                }),
-                headers: {
-                    "Content-type": "application/json"
-                }
+            api.post("/users", {
+                fullname: name,
+                contact: phone,
+                email: email,
+                number_rg: RG,
+                cpf: CPF,
+                password: password,
+                address: {
+                    cep: cep,
+                    street: street,
+                    city: city,
+                    state: state,
+                    region: district,
+                    number: number,
+                    complement: complement
+                },
+                billing_day: date
             })
                 .then(async () => {
                     Alert.alert("Usuário cadastrado com sucesso!")
@@ -128,7 +122,6 @@ export default function Terms({ route, navigation }) {
 
             </ScrollView>
         </SafeAreaView>
-
     )
 }
 

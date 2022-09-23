@@ -1,6 +1,7 @@
 import { LocaleConfig } from "react-native-calendars"
 
 export default function CalendarConfig() {
+
     LocaleConfig.locales["pt"] =
     {
         monthNames: [
@@ -16,7 +17,6 @@ export default function CalendarConfig() {
             "Outubro",
             "Novembro",
             "Dezembro"
-
         ],
         dayNames: ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"],
         dayNamesShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex"],

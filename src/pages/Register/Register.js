@@ -7,11 +7,9 @@ import {
     TouchableOpacity,
     View,
 } from "react-native"
-
+import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import { commonStyles } from "../../styles/CommonStyles"
 import { useState } from "react"
-import AlertIcon from "../../tools/AlertIcon/AlertIcon"
-
 
 export default function Register({ route, navigation }) {
 
@@ -76,7 +74,6 @@ export default function Register({ route, navigation }) {
                         CPF: CPF,
                         password: password
                     }
-
                 })
         }
     }
@@ -95,7 +92,7 @@ export default function Register({ route, navigation }) {
                     value={name}
                     onChangeText={setName}
                 />
-                {errorMessage.id === 1 &&
+                {errorMessage.id === 1 && 
                     <View style={commonStyles.errorView}>
                         <AlertIcon />
                         <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}

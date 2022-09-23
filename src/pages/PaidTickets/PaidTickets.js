@@ -9,20 +9,17 @@ import {
     View
 } from "react-native"
 
-import { API } from "../../services/Services"
+import api from "../../services/api"
 import { commonStyles } from "../../styles/CommonStyles"
 import ConvertDate from "../../tools/ConvertDate/ConvertDate"
 import { formatCurrency } from "react-native-format-currency"
-import { getId } from "../../tools/GetId/GetId"
 import { useIsFocused } from "@react-navigation/native"
 import { useState, useEffect, useContext } from "react"
-import {UserContext } from "../../contexts/UserContext"
-
+import { UserContext } from "../../contexts/UserContext"
 
 export default function Payments() {
 
-    //const [id, setId] = useState("")
-    const {id} = useContext(UserContext)
+    const { id } = useContext(UserContext)
     const [list, setList] = useState([])
     const focusedScreen = useIsFocused()
 
@@ -32,14 +29,11 @@ export default function Payments() {
         }
     }, [focusedScreen])
 
-    //getId(setId)
 
     function getList() {
-        fetch(API + "/invoices?user_id=" + id)
-            .then(async (response) => {
-                const data = await response.json()
-                setList(data)
-
+        api.get("/invoices?user_id=" + id)
+            .then(response => {
+                setList(response.data)
             })
             .catch(() => Alert.alert("Erro ao recuperar os dados."))
     }
@@ -47,29 +41,25 @@ export default function Payments() {
     function convertAmount(amount) {
         const amountToCurrency = formatCurrency({ amount: (amount), code: "BRL" })[0]
         return (amountToCurrency)
-
     }
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar backgroundColor={"#0a9396"}/>
+            <StatusBar backgroundColor={"#0a9396"} />
             <ScrollView style={{ flex: 1, width: "100%" }}>
 
                 <Text style={commonStyles.title}>Boletos pagos</Text>
 
                 {
                     list.map((item) => (
-                        <View style={styles.itemView}
-                            key={item.id}>
+                        <View style={styles.itemView} key={item.id}>
 
                             <View style={styles.littleView}>
                                 <Text style={styles.yellowText}> {ConvertDate(item.date)}</Text>
-                                <Text style={{...styles.yellowText, fontWeight: "normal"}}>{convertAmount(item.amount)}</Text>
+                                <Text style={{ ...styles.yellowText, fontWeight: "normal" }}>{convertAmount(item.amount)}</Text>
                             </View>
 
-
-                            <Text style = {styles.blueText}>{item.recipient}</Text>
-
+                            <Text style={styles.blueText}>{item.recipient}</Text>
 
                         </View>
                     ))
@@ -88,10 +78,10 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: "bold",
         marginLeft: "5%"
-       
+
     },
-    
-    itemView: 
+
+    itemView:
     {
         width: "90%",
         height: Dimensions.get("screen").height * 0.15,
@@ -103,7 +93,7 @@ const styles = StyleSheet.create({
         margin: 8,
     },
 
-    littleView: 
+    littleView:
     {
         width: "90%",
         justifyContent: "space-between",
@@ -118,10 +108,7 @@ const styles = StyleSheet.create({
         color: "#ee9b00",
         fontSize: 20,
         fontWeight: "bold",
-        alignSelf: "flex-start", 
+        alignSelf: "flex-start",
     },
-   
-
-
 
 })

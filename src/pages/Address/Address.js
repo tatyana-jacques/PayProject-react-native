@@ -8,13 +8,12 @@ import {
     TouchableOpacity,
     View
 } from "react-native"
-
 import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import { commonStyles } from "../../styles/CommonStyles"
 import { Picker } from "@react-native-picker/picker"
 import { states } from "../../tools/States/States"
 import { useState, useEffect } from "react"
-
+import viacep from "../../services/viacep"
 
 export default function Address({ route, navigation }) {
 
@@ -33,20 +32,17 @@ export default function Address({ route, navigation }) {
 
     useEffect(() => {
         if (cep.length === 8) {
-            fetch("https://viacep.com.br/ws/" + cep + "/json")
-                .then(async (response) => {
-                    const data = await response.json()
-                    setCity(data.localidade)
-                    setComplement(data.complemento)
-                    setDistrict(data.bairro)
-                    setState(data.uf)
-                    setStreet(data.logradouro)
-
+            viacep.get(+ cep + "/json")
+                .then((response) => {
+                    setCity(response.data.localidade)
+                    setComplement(response.data.complemento)
+                    setDistrict(response.data.bairro)
+                    setState(response.data.uf)
+                    setStreet(response.data.logradouro)
                 })
                 .catch(() => {
                     alert("Não foi possível recuperar suas informações de endereço.")
                 })
-
         }
     }, [cep])
 
@@ -110,8 +106,9 @@ export default function Address({ route, navigation }) {
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar backgroundColor={"#0a9396"}/>
+            <StatusBar backgroundColor={"#0a9396"} />
             <ScrollView style={{ flex: 1, width: "100%" }}>
+
                 <Text style={commonStyles.title}>Endereço</Text>
 
                 <Text style={commonStyles.yellowText}>CEP</Text>
@@ -153,17 +150,16 @@ export default function Address({ route, navigation }) {
                     <View style={commonStyles.errorView}>
                         <AlertIcon />
                         <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}
+
                 <Picker
                     selectedValue={state}
                     onValueChange={(value) => setState(value)}
                     style={styles.select}
-
                 >
                     {
                         states.map((state) => (
                             <Picker.Item label={state.name} value={state.initials} key={state.name} />
                         ))
-
                     }
                 </Picker>
                 {errorMessage.id === 4 &&

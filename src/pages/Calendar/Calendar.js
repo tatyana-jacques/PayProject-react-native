@@ -36,9 +36,7 @@ export default function Register({ route, navigation }) {
 
         else {
             const parseDate = parseISO(date)
-
             const formatedDate = format(new Date(parseDate), "dd 'de' MMMM  'de' yyyy", { locale: ptBR })
-
 
             Alert.alert(
                 "Confirmar data:",
