@@ -1,7 +1,6 @@
 import {
   Dimensions,
   SafeAreaView,
-  StatusBar,
   Text,
   TouchableOpacity
 } from "react-native"
@@ -15,7 +14,6 @@ export default function Initial({ route, navigation }) {
   return (
 
     <SafeAreaView style={commonStyles.container}>
-      <StatusBar backgroundColor={"#0a9396"} />
 
       <LottieView
         autoPlay

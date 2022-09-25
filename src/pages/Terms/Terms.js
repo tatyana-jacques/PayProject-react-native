@@ -1,9 +1,8 @@
 import {
-  
+
     SafeAreaView,
     ScrollView,
     Switch,
-    StatusBar,
     StyleSheet,
     Text,
     TouchableOpacity,
@@ -25,7 +24,7 @@ export default function Terms({ route, navigation }) {
 
     function registerUser() {
         if (accept === false) {
-            ToastMessage(`Para prosseguir, você tem que aceitar os termos.`, "#ee9b00", 30)
+            ToastMessage(`Para prosseguir, você deve aceitar os termos.`, "#ee9b00", 30)
         }
         else {
 
@@ -48,7 +47,8 @@ export default function Terms({ route, navigation }) {
                 billing_day: date
             })
                 .then(async () => {
-                    ToastMessage(`Usuário cadastrado com sucesso`, "#0a9396", 30)
+                    ToastMessage(`Usuário cadastrado com sucesso`, "#0a9396", 15)
+                    navigation.navigate ("Login")
                 })
                 .catch(() => {
                     ToastMessage(`Falha ao realizar o cadastro`, "#ee9b00", 30)
@@ -59,7 +59,6 @@ export default function Terms({ route, navigation }) {
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar backgroundColor={"#0a9396"} />
             <ScrollView style={{ flex: 1, width: "100%" }}>
 
                 <Text style={commonStyles.title}>Termos de uso</Text>

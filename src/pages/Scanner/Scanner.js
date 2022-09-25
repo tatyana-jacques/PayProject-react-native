@@ -2,7 +2,6 @@ import {
     Dimensions,
     SafeAreaView,
     ScrollView,
-    StatusBar,
     Text,
     TouchableOpacity,
     View,
@@ -72,7 +71,6 @@ export default function Scanner({ navigation }) {
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar backgroundColor={"#0a9396"} />
             <ScrollView style={{ flex: 1, width: "100%" }}>
 
                 <Text style={commonStyles.title}>Olá, {loggedName}!</Text>

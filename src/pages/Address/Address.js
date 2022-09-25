@@ -1,7 +1,6 @@
 import {
     SafeAreaView,
     ScrollView,
-    StatusBar,
     StyleSheet,
     TextInput,
     Text,
@@ -16,8 +15,8 @@ import { useState, useEffect } from "react"
 import viacep from "../../services/viacep"
 
 export default function Address({ route, navigation }) {
-   
-    const { user } = route.params 
+
+    const { user } = route.params
     const [cep, setCep] = useState("")
     const [city, setCity] = useState("")
     const [complement, setComplement] = useState("")
@@ -25,12 +24,12 @@ export default function Address({ route, navigation }) {
     const [number, setNumber] = useState("")
     const [state, setState] = useState("")
     const [street, setStreet] = useState("")
-    
+
     const [errorMessage, setErrorMessage] = useState({
         id: "",
         message: ""
     })
-   
+
     useEffect(() => {
         if (cep.length === 8) {
             viacep.get(+ cep + "/json")
@@ -108,12 +107,11 @@ export default function Address({ route, navigation }) {
                 message: ""
             })
         }
-       
+
     }
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar backgroundColor={"#0a9396"} />
             <ScrollView style={{ flex: 1, width: "100%" }}>
 
                 <Text style={commonStyles.title}>Endereço</Text>
@@ -127,7 +125,7 @@ export default function Address({ route, navigation }) {
                     keyboardType="number-pad"
                     onChangeText={setCep}
                 />
-                {errorMessage.id === 1 && <ErrorMessage message = {errorMessage.message}/>}
+                {errorMessage.id === 1 && <ErrorMessage message={errorMessage.message} />}
 
                 <Text style={commonStyles.yellowText}>Rua</Text>
                 <TextInput
@@ -137,7 +135,7 @@ export default function Address({ route, navigation }) {
                     value={street}
                     onChangeText={setStreet}
                 />
-                {errorMessage.id === 2 && <ErrorMessage message = {errorMessage.message}/>}
+                {errorMessage.id === 2 && <ErrorMessage message={errorMessage.message} />}
 
                 <Text style={commonStyles.yellowText}>Cidade</Text>
                 <TextInput
@@ -147,7 +145,7 @@ export default function Address({ route, navigation }) {
                     value={city}
                     onChangeText={setCity}
                 />
-                {errorMessage.id === 3 && <ErrorMessage message = {errorMessage.message}/>}
+                {errorMessage.id === 3 && <ErrorMessage message={errorMessage.message} />}
 
                 <Picker
                     selectedValue={state}
@@ -160,7 +158,7 @@ export default function Address({ route, navigation }) {
                         ))
                     }
                 </Picker>
-                {errorMessage.id === 4 && <ErrorMessage message = {errorMessage.message}/>}
+                {errorMessage.id === 4 && <ErrorMessage message={errorMessage.message} />}
 
                 <Text style={commonStyles.yellowText}>Bairro</Text>
                 <TextInput
@@ -170,7 +168,7 @@ export default function Address({ route, navigation }) {
                     value={district}
                     onChangeText={setDistrict}
                 />
-                {errorMessage.id === 5 && <ErrorMessage message = {errorMessage.message}/>}
+                {errorMessage.id === 5 && <ErrorMessage message={errorMessage.message} />}
 
                 <Text style={commonStyles.yellowText}>Nº da residência</Text>
                 <TextInput
@@ -181,7 +179,7 @@ export default function Address({ route, navigation }) {
                     value={number}
                     onChangeText={setNumber}
                 />
-                {errorMessage.id === 6 && <ErrorMessage message = {errorMessage.message}/>}
+                {errorMessage.id === 6 && <ErrorMessage message={errorMessage.message} />}
 
                 <Text style={commonStyles.yellowText}>Complemento</Text>
                 <TextInput

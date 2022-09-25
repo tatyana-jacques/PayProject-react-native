@@ -2,7 +2,6 @@ import {
     Dimensions,
     SafeAreaView,
     ScrollView,
-    StatusBar,
     StyleSheet,
     Text,
     TouchableOpacity,
@@ -24,7 +23,7 @@ export default function Details({ route, navigation }) {
     const date = format(new Date(), "dd/MM/yyyy HH:mm", { locale: ptBR })
 
     function toPay() {
-        api.post ("/invoices", {
+        api.post("/invoices", {
             recipient: recipient,
             amount: amount,
             date: date,
@@ -40,9 +39,8 @@ export default function Details({ route, navigation }) {
     }
 
     return (
-        
+
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar backgroundColor={"#0a9396"} />
             <ScrollView style={{ flex: 1, width: "100%" }}>
 
                 <View style={styles.view}>

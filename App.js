@@ -6,6 +6,7 @@ import Calendar from "./src/pages/Calendar/Calendar"
 import Initial from "./src/pages/Initial/Initial"
 import Login from "./src/pages/Login/Login"
 import Register from "./src/pages/Register/Register"
+import { StatusBar } from "react-native"
 import Terms from "./src/pages/Terms/Terms"
 import UserNavigation from "./src/tools/NavigatorComponents/UserNavigation"
 import UserProvider from "./src/contexts/UserContext"
@@ -15,8 +16,9 @@ const Stack = createStackNavigator()
 export default function App() {
 
   return (
-    
+
     <UserProvider>
+      <StatusBar backgroundColor={"#0a9396"} />
       <NavigationContainer>
 
         <Stack.Navigator initialRouteName="Initial">
@@ -81,6 +83,6 @@ export default function App() {
 
       </NavigationContainer>
     </UserProvider>
-    
+
   )
 }

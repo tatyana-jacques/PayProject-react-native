@@ -1,7 +1,6 @@
 import {
     SafeAreaView,
     ScrollView,
-    StatusBar,
     Text,
     TextInput,
     TouchableOpacity,
@@ -76,17 +75,16 @@ export default function Register({ navigation }) {
                     }
                 })
 
-                 setErrorMessage({
-            id: "",
-            message: ""
-        })
+            setErrorMessage({
+                id: "",
+                message: ""
+            })
         }
-       
+
     }
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar backgroundColor={"#0a9396"}/>
             <ScrollView style={{ flex: 1, width: "100%" }}>
                 <Text style={commonStyles.title}>Nova Conta</Text>
 
@@ -98,7 +96,7 @@ export default function Register({ navigation }) {
                     value={name}
                     onChangeText={setName}
                 />
-                {errorMessage.id === 1 && <ErrorMessage message = {errorMessage.message}/>}
+                {errorMessage.id === 1 && <ErrorMessage message={errorMessage.message} />}
 
                 <Text style={commonStyles.yellowText}>Telefone</Text>
                 <TextInput
@@ -109,7 +107,7 @@ export default function Register({ navigation }) {
                     value={phone}
                     onChangeText={setPhone}
                 />
-                {errorMessage.id === 2 && <ErrorMessage message = {errorMessage.message}/>}
+                {errorMessage.id === 2 && <ErrorMessage message={errorMessage.message} />}
 
                 <Text style={commonStyles.yellowText}>E-mail</Text>
                 <TextInput
@@ -120,7 +118,7 @@ export default function Register({ navigation }) {
                     value={email}
                     onChangeText={setEmail}
                 />
-                {errorMessage.id === 3 && <ErrorMessage message = {errorMessage.message}/>}
+                {errorMessage.id === 3 && <ErrorMessage message={errorMessage.message} />}
 
                 <Text style={commonStyles.yellowText}>Nº do RG</Text>
                 <TextInput
@@ -131,7 +129,7 @@ export default function Register({ navigation }) {
                     value={RG}
                     onChangeText={setRG}
                 />
-                {errorMessage.id === 4 && <ErrorMessage message = {errorMessage.message}/>}
+                {errorMessage.id === 4 && <ErrorMessage message={errorMessage.message} />}
 
                 <Text style={commonStyles.yellowText}>CPF</Text>
                 <TextInput
@@ -142,7 +140,7 @@ export default function Register({ navigation }) {
                     value={CPF}
                     onChangeText={setCPF}
                 />
-                {errorMessage.id === 5 && <ErrorMessage message = {errorMessage.message}/>}
+                {errorMessage.id === 5 && <ErrorMessage message={errorMessage.message} />}
 
                 <Text style={commonStyles.yellowText}>Senha</Text>
                 <TextInput
@@ -153,7 +151,7 @@ export default function Register({ navigation }) {
                     value={password}
                     onChangeText={setPassword}
                 />
-                {errorMessage.id === 6 && <ErrorMessage message = {errorMessage.message}/>}
+                {errorMessage.id === 6 && <ErrorMessage message={errorMessage.message} />}
                 <View style={commonStyles.littleButtonView}>
                     <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Initial") })}>
                         <Text style={commonStyles.buttonText}>Voltar</Text>

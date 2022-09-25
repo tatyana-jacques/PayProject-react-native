@@ -2,7 +2,6 @@ import {
     Dimensions,
     SafeAreaView,
     ScrollView,
-    StatusBar,
     StyleSheet,
     Text,
     View
@@ -45,7 +44,6 @@ export default function Payments() {
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar backgroundColor={"#0a9396"} />
             <ScrollView style={{ flex: 1, width: "100%" }}>
 
                 <Text style={commonStyles.title}>Boletos pagos</Text>

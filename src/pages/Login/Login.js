@@ -2,7 +2,6 @@ import {
     Image,
     SafeAreaView,
     ScrollView,
-    StatusBar,
     StyleSheet,
     Text,
     TextInput,
@@ -62,7 +61,6 @@ export default function Login({ navigation }) {
 
     return (
         <SafeAreaView style={commonStyles.container}>
-            <StatusBar backgroundColor={"#0a9396"} />
             <ScrollView style={{ flex: 1, width: "100%" }}>
 
                 <Image source={image} style={styles.image} resizeMode="contain" />
