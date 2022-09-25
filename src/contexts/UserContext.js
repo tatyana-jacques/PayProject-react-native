@@ -4,14 +4,25 @@ export const UserContext = createContext({})
 
 export default function UserProvider({ children }) {
 
-    const [id, setId] = useState("")
-    const [name, setName] = useState("")
-    const [cpf, setCpf] = useState("")
-    const [contact, setContact] = useState("")
-    const [RG, setRG] = useState("")
+    const [loggedId, setLoggedId] = useState("")
+    const [loggedName, setLoggedName] = useState("")
+    const [loggedCpf, setLoggedCpf] = useState("")
+    const [loggedContact, setLoggedContact] = useState("")
+    const [loggedRG, setLoggedRG] = useState("")
 
     return (
-        <UserContext.Provider value={{ id, name, cpf, contact, RG, setId, setName, setCpf, setContact, setRG }}>
+        <UserContext.Provider value={{
+            loggedId,
+            loggedName,
+            loggedCpf,
+            loggedContact,
+            loggedRG,
+            setLoggedId,
+            setLoggedName,
+            setLoggedCpf,
+            setLoggedContact,
+            setLoggedRG
+        }}>
             {children}
         </UserContext.Provider>
 

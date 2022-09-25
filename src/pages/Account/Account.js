@@ -13,7 +13,7 @@ import { useContext, useEffect } from "react"
 
 export default function Terms({ navigation }) {
 
-    const { name, cpf, contact, RG } = useContext(UserContext)
+    const { loggedName, loggedCpf, loggedContact, loggedRG } = useContext(UserContext)
 
     return (
         <SafeAreaView style={commonStyles.container}>
@@ -25,10 +25,10 @@ export default function Terms({ navigation }) {
                 <View style={commonStyles.bigView}>
 
                     <View style={styles.textView}>
-                        <Text style={styles.blueText}>Nome: {name}</Text>
-                        <Text style={styles.blueText}>CPF: {cpf}</Text>
-                        <Text style={styles.blueText}>Telefone: {contact}</Text>
-                        <Text style={styles.blueText}>RG: {RG}</Text>
+                        <Text style={styles.blueText}>Nome: {loggedName}</Text>
+                        <Text style={styles.blueText}>CPF: {loggedCpf}</Text>
+                        <Text style={styles.blueText}>Telefone: {loggedContact}</Text>
+                        <Text style={styles.blueText}>RG: {loggedRG}</Text>
                     </View>
 
                     <TouchableOpacity style={commonStyles.button} onPress={(() => { navigation.navigate("Initial") })}>

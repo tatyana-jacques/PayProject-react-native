@@ -1,5 +1,4 @@
 import {
-    Alert,
     Dimensions,
     SafeAreaView,
     ScrollView,
@@ -14,6 +13,7 @@ import { commonStyles } from "../../styles/CommonStyles"
 import { formatCurrency } from "react-native-format-currency"
 import { format } from "date-fns"
 import ptBR from "date-fns/locale/pt-BR"
+import ToastMessage from "../../tools/Toast/Toast"
 
 export default function Details({ route, navigation }) {
 
@@ -33,10 +33,10 @@ export default function Details({ route, navigation }) {
             cashback: cashback
         })
             .then(async () => {
-                Alert.alert("Pagamento realizado com sucesso!")
+                ToastMessage("Pagamento realizado com sucesso!", "#0a9396", 300)
                 navigation.navigate("Account")
             })
-            .catch(() => Alert.alert("Falha ao realizar o pagamento."))
+            .catch(() => ToastMessage("Falha ao realizar o pagamento!", "#ee8b00", 300))
     }
 
     return (

@@ -1,5 +1,4 @@
 import {
-    Alert,
     Dimensions,
     SafeAreaView,
     ScrollView,
@@ -13,13 +12,14 @@ import api from "../../services/api"
 import { commonStyles } from "../../styles/CommonStyles"
 import ConvertDate from "../../tools/ConvertDate/ConvertDate"
 import { formatCurrency } from "react-native-format-currency"
+import ToastMessage from "../../tools/Toast/Toast"
 import { useIsFocused } from "@react-navigation/native"
 import { useState, useEffect, useContext } from "react"
 import { UserContext } from "../../contexts/UserContext"
 
 export default function Payments() {
 
-    const { id } = useContext(UserContext)
+    const { loggedId } = useContext(UserContext)
     const [list, setList] = useState([])
     const focusedScreen = useIsFocused()
 
@@ -31,11 +31,11 @@ export default function Payments() {
 
 
     function getList() {
-        api.get("/invoices?user_id=" + id)
+        api.get("/invoices?user_id=" + loggedId)
             .then(response => {
                 setList(response.data)
             })
-            .catch(() => Alert.alert("Erro ao recuperar os dados."))
+            .catch(() => ToastMessage("Erro ao carregar dados", "#ee8b00", 100))
     }
 
     function convertAmount(amount) {

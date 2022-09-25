@@ -1,5 +1,4 @@
 import {
-    Alert,
     Image,
     SafeAreaView,
     ScrollView,
@@ -14,6 +13,7 @@ import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import api from "../../services/api"
 import { commonStyles } from "../../styles/CommonStyles"
 import image from "../../../assets/logoPay.png"
+import ToastMessage from "../../tools/Toast/Toast"
 import { UserContext } from "../../contexts/UserContext"
 import { useState, useContext } from "react"
 
@@ -23,7 +23,7 @@ export default function Login({ navigation }) {
     const [CPF, setCPF] = useState("")
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
-    const { setId, setName, setCpf, setContact, setRG } = useContext(UserContext)
+    const { setLoggedId, setLoggedName, setLoggedCpf, setLoggedContact, setLoggedRG } = useContext(UserContext)
 
     function navigateToUser() {
 
@@ -45,18 +45,18 @@ export default function Login({ navigation }) {
             api.get("/users?cpf=" + CPF + "&password=" + password)
                 .then(response => {
                     if (response.data.length === 1) {
-                        setId(response.data[0].id)
-                        setName(response.data[0].fullname)
-                        setCpf(response.data[0].cpf)
-                        setContact(response.data[0].contact)
-                        setRG(response.data[0].number_rg)
+                        setLoggedId(response.data[0].id)
+                        setLoggedName(response.data[0].fullname)
+                        setLoggedCpf(response.data[0].cpf)
+                        setLoggedContact(response.data[0].contact)
+                        setLoggedRG(response.data[0].number_rg)
                         navigation.navigate("User")
                     }
                     else {
-                        Alert.alert("Usuário inválido!")
+                        ToastMessage("Usuário inválido", "#ee8b00", 15)
                     }
                 })
-                .catch(() => Alert.alert("Erro ao tentar logar!"))
+                .catch(() => ToastMessage("Erro ao tentar logar.", "#ee8b00", 15))
         }
     }
 

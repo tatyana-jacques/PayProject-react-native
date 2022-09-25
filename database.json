@@ -270,6 +270,24 @@
       "user_id": 8,
       "cashback": "30.06",
       "id": 13
+    },
+    {
+      "recipient": "EPP",
+      "amount": 55.1,
+      "date": "24/09/2022 23:56",
+      "code": 984732456079,
+      "user_id": 2,
+      "cashback": "5.51",
+      "id": 14
+    },
+    {
+      "recipient": "EPP",
+      "amount": 55.1,
+      "date": "24/09/2022 23:57",
+      "code": 984732456079,
+      "user_id": 2,
+      "cashback": "5.51",
+      "id": 15
     }
   ],
   "debts": [

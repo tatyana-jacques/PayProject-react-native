@@ -1,5 +1,4 @@
 import {
-    Alert,
     Dimensions,
     SafeAreaView,
     ScrollView,
@@ -13,13 +12,14 @@ import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import api from "../../services/api"
 import { BarCodeScanner } from "expo-barcode-scanner"
 import { commonStyles } from "../../styles/CommonStyles"
+import ToastMessage from "../../tools/Toast/Toast"
 import { useIsFocused } from "@react-navigation/native"
 import { useState, useEffect, useContext } from "react"
 import { UserContext } from "../../contexts/UserContext"
 
 export default function Scanner({ navigation }) {
 
-    const { name, id } = useContext(UserContext)
+    const { loggedName, loggedId } = useContext(UserContext)
     const [button, setButton] = useState(true)
     const [permission, setPermission] = useState("")
     const [scanned, setScanned] = useState(true)
@@ -52,17 +52,16 @@ export default function Scanner({ navigation }) {
                         recipient: response.data[0].recipient,
                         amount: response.data[0].amount,
                         code: response.data[0].id,
-                        user_id: id
+                        user_id: loggedId
                     })
                 }
                 else {
-
-                    Alert.alert("Código inválido!" + data)
+                    ToastMessage("Código inválido!", "#ee8b00", 100)
                     setButton(true)
 
                 }
             })
-            .catch(() => Alert.alert("Erro ao tentar scannear."))
+            .catch(() => ToastMessage("Erro ao tentar escanear!", "#ee8b00", 100))
     }
 
     function openCamera() {
@@ -76,7 +75,7 @@ export default function Scanner({ navigation }) {
             <StatusBar backgroundColor={"#0a9396"} />
             <ScrollView style={{ flex: 1, width: "100%" }}>
 
-                <Text style={commonStyles.title}>Olá, {name}!</Text>
+                <Text style={commonStyles.title}>Olá, {loggedName}!</Text>
 
                 <View style={{ ...commonStyles.bigView, justifyContent: "center" }}>
 

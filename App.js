@@ -13,11 +13,12 @@ import UserProvider from "./src/contexts/UserContext"
 const Stack = createStackNavigator()
 
 export default function App() {
-  
-  return (
 
-    <NavigationContainer>
-      <UserProvider>
+  return (
+    
+    <UserProvider>
+      <NavigationContainer>
+
         <Stack.Navigator initialRouteName="Initial">
 
           <Stack.Screen
@@ -77,7 +78,9 @@ export default function App() {
           />
 
         </Stack.Navigator>
-      </UserProvider>
-    </NavigationContainer>
+
+      </NavigationContainer>
+    </UserProvider>
+    
   )
 }

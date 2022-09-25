@@ -8,16 +8,16 @@ import {
     TouchableOpacity,
     View
 } from "react-native"
-import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import { commonStyles } from "../../styles/CommonStyles"
+import ErrorMessage from "../../tools/ErrorMessage/ErrorMesage"
 import { Picker } from "@react-native-picker/picker"
 import { states } from "../../tools/States/States"
 import { useState, useEffect } from "react"
 import viacep from "../../services/viacep"
 
 export default function Address({ route, navigation }) {
-
-    const { user } = route.params
+   
+    const { user } = route.params 
     const [cep, setCep] = useState("")
     const [city, setCity] = useState("")
     const [complement, setComplement] = useState("")
@@ -25,11 +25,12 @@ export default function Address({ route, navigation }) {
     const [number, setNumber] = useState("")
     const [state, setState] = useState("")
     const [street, setStreet] = useState("")
+    
     const [errorMessage, setErrorMessage] = useState({
         id: "",
         message: ""
     })
-
+   
     useEffect(() => {
         if (cep.length === 8) {
             viacep.get(+ cep + "/json")
@@ -101,7 +102,13 @@ export default function Address({ route, navigation }) {
                     }
                 }
             )
+
+            setErrorMessage({
+                id: "",
+                message: ""
+            })
         }
+       
     }
 
     return (
@@ -120,10 +127,7 @@ export default function Address({ route, navigation }) {
                     keyboardType="number-pad"
                     onChangeText={setCep}
                 />
-                {errorMessage.id === 1 &&
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}
+                {errorMessage.id === 1 && <ErrorMessage message = {errorMessage.message}/>}
 
                 <Text style={commonStyles.yellowText}>Rua</Text>
                 <TextInput
@@ -133,10 +137,7 @@ export default function Address({ route, navigation }) {
                     value={street}
                     onChangeText={setStreet}
                 />
-                {errorMessage.id === 2 &&
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}
+                {errorMessage.id === 2 && <ErrorMessage message = {errorMessage.message}/>}
 
                 <Text style={commonStyles.yellowText}>Cidade</Text>
                 <TextInput
@@ -146,10 +147,7 @@ export default function Address({ route, navigation }) {
                     value={city}
                     onChangeText={setCity}
                 />
-                {errorMessage.id === 3 &&
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}
+                {errorMessage.id === 3 && <ErrorMessage message = {errorMessage.message}/>}
 
                 <Picker
                     selectedValue={state}
@@ -162,10 +160,7 @@ export default function Address({ route, navigation }) {
                         ))
                     }
                 </Picker>
-                {errorMessage.id === 4 &&
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}
+                {errorMessage.id === 4 && <ErrorMessage message = {errorMessage.message}/>}
 
                 <Text style={commonStyles.yellowText}>Bairro</Text>
                 <TextInput
@@ -175,10 +170,7 @@ export default function Address({ route, navigation }) {
                     value={district}
                     onChangeText={setDistrict}
                 />
-                {errorMessage.id === 5 &&
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}
+                {errorMessage.id === 5 && <ErrorMessage message = {errorMessage.message}/>}
 
                 <Text style={commonStyles.yellowText}>Nº da residência</Text>
                 <TextInput
@@ -189,10 +181,8 @@ export default function Address({ route, navigation }) {
                     value={number}
                     onChangeText={setNumber}
                 />
-                {errorMessage.id === 6 &&
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}
+                {errorMessage.id === 6 && <ErrorMessage message = {errorMessage.message}/>}
+
                 <Text style={commonStyles.yellowText}>Complemento</Text>
                 <TextInput
                     style={commonStyles.input}
@@ -203,7 +193,7 @@ export default function Address({ route, navigation }) {
                 />
 
                 <View style={commonStyles.littleButtonView}>
-                    <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Initial") })}>
+                    <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Register") })}>
                         <Text style={commonStyles.buttonText}>Voltar</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={commonStyles.littleButton} onPress={navigateToCalendar}>

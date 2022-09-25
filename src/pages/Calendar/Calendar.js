@@ -1,5 +1,4 @@
 import {
-    Alert,
     SafeAreaView,
     ScrollView,
     StatusBar,
@@ -8,13 +7,15 @@ import {
     TouchableOpacity,
     View
 } from "react-native"
-import AlertIcon from "../../tools/AlertIcon/AlertIcon"
+
 import { Calendar } from "react-native-calendars"
 import CalendarConfig from "../../tools/LocaleConfig/LocaleConfig"
 import { commonStyles } from "../../styles/CommonStyles"
+import ErrorMessage from "../../tools/ErrorMessage/ErrorMesage"
 import { format, parseISO } from "date-fns"
 import ptBR from "date-fns/locale/pt-BR"
-import { useState } from "react"
+import ToastMessage from "../../tools/Toast/Toast"
+import { useEffect, useState } from "react"
 
 export default function Register({ route, navigation }) {
 
@@ -25,8 +26,15 @@ export default function Register({ route, navigation }) {
     const [date, setDate] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
 
-    
-   CalendarConfig()
+
+    CalendarConfig()
+    useEffect(() => {
+        if (date) {
+            const parseDate = parseISO(date)
+            const formatedDate = format(new Date(parseDate), "dd 'de' MMMM  'de' yyyy", { locale: ptBR })
+            ToastMessage(`Você escolheu o dia ${formatedDate} como data de cobrança`, "#0a9396", 70)
+        }
+    }, [date])
 
 
     function navigateToTerms() {
@@ -35,32 +43,14 @@ export default function Register({ route, navigation }) {
         }
 
         else {
-            const parseDate = parseISO(date)
-            const formatedDate = format(new Date(parseDate), "dd 'de' MMMM  'de' yyyy", { locale: ptBR })
-
-            Alert.alert(
-                "Confirmar data:",
-                "Deseja salvar o dia " + formatedDate + " como data de cobrança?",
-                [
-                    {
-                        text: "Não",
-                        onPress: (() => setDate(""))
-                    },
-
-                    {
-                        text: "Sim",
-                        onPress: (() => {
-                            navigation.navigate(
-                                "Terms",
-                                {
-                                    date: date,
-                                    user: user,
-                                    address: address
-                                })
-                        })
-                    }
-                ]
-            )
+            navigation.navigate(
+                "Terms",
+                {
+                    date: date,
+                    user: user,
+                    address: address
+                })
+            setErrorMessage("")
         }
     }
 
@@ -96,14 +86,10 @@ export default function Register({ route, navigation }) {
                     }}
                 />
 
-                {errorMessage &&
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage}</Text>
-                    </View>}
+                {errorMessage && <ErrorMessage message={errorMessage} />}
 
                 <View style={commonStyles.littleButtonView}>
-                    <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Initial") })}>
+                    <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Address", { user }) })}>
                         <Text style={commonStyles.buttonText}>Voltar</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={commonStyles.littleButton} onPress={navigateToTerms}>
@@ -122,5 +108,6 @@ const styles = StyleSheet.create({
         width: "90%",
         alignSelf: "center",
         marginVertical: 20,
+        marginTop: 30
     }
 })

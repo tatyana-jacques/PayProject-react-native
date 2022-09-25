@@ -1,5 +1,5 @@
 import {
-    Alert,
+  
     SafeAreaView,
     ScrollView,
     Switch,
@@ -12,6 +12,7 @@ import {
 
 import api from "../../services/api"
 import { commonStyles } from "../../styles/CommonStyles"
+import ToastMessage from "../../tools/Toast/Toast"
 import { useState } from "react"
 
 export default function Terms({ route, navigation }) {
@@ -24,9 +25,7 @@ export default function Terms({ route, navigation }) {
 
     function registerUser() {
         if (accept === false) {
-            Alert.alert(
-                "Atenção!",
-                "Para prosseguir, você deve aceitar os termos!")
+            ToastMessage(`Para prosseguir, você tem que aceitar os termos.`, "#ee9b00", 30)
         }
         else {
 
@@ -49,10 +48,12 @@ export default function Terms({ route, navigation }) {
                 billing_day: date
             })
                 .then(async () => {
-                    Alert.alert("Usuário cadastrado com sucesso!")
-                    navigation.navigate("Login")
+                    ToastMessage(`Usuário cadastrado com sucesso`, "#0a9396", 30)
                 })
-                .catch(() => Alert.alert("Falha ao realizar o cadastro."))
+                .catch(() => {
+                    ToastMessage(`Falha ao realizar o cadastro`, "#ee9b00", 30)
+                }
+                )
         }
     }
 
@@ -111,7 +112,7 @@ export default function Terms({ route, navigation }) {
 
                 <View style={commonStyles.littleButtonView}>
                     <TouchableOpacity style={commonStyles.littleButton}
-                        onPress={(() => { navigation.navigate("Calendar") })}
+                        onPress={(() => { navigation.navigate("Calendar", { user, address }) })}
                     >
                         <Text style={commonStyles.buttonText}>Voltar</Text>
                     </TouchableOpacity>

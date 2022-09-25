@@ -7,11 +7,11 @@ import {
     TouchableOpacity,
     View,
 } from "react-native"
-import AlertIcon from "../../tools/AlertIcon/AlertIcon"
 import { commonStyles } from "../../styles/CommonStyles"
+import ErrorMessage from "../../tools/ErrorMessage/ErrorMesage"
 import { useState } from "react"
 
-export default function Register({ route, navigation }) {
+export default function Register({ navigation }) {
 
     const [name, setName] = useState("")
     const [phone, setPhone] = useState("")
@@ -75,7 +75,13 @@ export default function Register({ route, navigation }) {
                         password: password
                     }
                 })
+
+                 setErrorMessage({
+            id: "",
+            message: ""
+        })
         }
+       
     }
 
     return (
@@ -92,10 +98,7 @@ export default function Register({ route, navigation }) {
                     value={name}
                     onChangeText={setName}
                 />
-                {errorMessage.id === 1 && 
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}
+                {errorMessage.id === 1 && <ErrorMessage message = {errorMessage.message}/>}
 
                 <Text style={commonStyles.yellowText}>Telefone</Text>
                 <TextInput
@@ -106,10 +109,7 @@ export default function Register({ route, navigation }) {
                     value={phone}
                     onChangeText={setPhone}
                 />
-                {errorMessage.id === 2 &&
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}
+                {errorMessage.id === 2 && <ErrorMessage message = {errorMessage.message}/>}
 
                 <Text style={commonStyles.yellowText}>E-mail</Text>
                 <TextInput
@@ -120,10 +120,7 @@ export default function Register({ route, navigation }) {
                     value={email}
                     onChangeText={setEmail}
                 />
-                {errorMessage.id === 3 &&
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}
+                {errorMessage.id === 3 && <ErrorMessage message = {errorMessage.message}/>}
 
                 <Text style={commonStyles.yellowText}>Nº do RG</Text>
                 <TextInput
@@ -134,10 +131,7 @@ export default function Register({ route, navigation }) {
                     value={RG}
                     onChangeText={setRG}
                 />
-                {errorMessage.id === 4 &&
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}
+                {errorMessage.id === 4 && <ErrorMessage message = {errorMessage.message}/>}
 
                 <Text style={commonStyles.yellowText}>CPF</Text>
                 <TextInput
@@ -148,10 +142,7 @@ export default function Register({ route, navigation }) {
                     value={CPF}
                     onChangeText={setCPF}
                 />
-                {errorMessage.id === 5 &&
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={styles.errorText}>{errorMessage.message}</Text></View>}
+                {errorMessage.id === 5 && <ErrorMessage message = {errorMessage.message}/>}
 
                 <Text style={commonStyles.yellowText}>Senha</Text>
                 <TextInput
@@ -162,10 +153,7 @@ export default function Register({ route, navigation }) {
                     value={password}
                     onChangeText={setPassword}
                 />
-                {errorMessage.id === 6 &&
-                    <View style={commonStyles.errorView}>
-                        <AlertIcon />
-                        <Text style={commonStyles.errorText}>{errorMessage.message}</Text></View>}
+                {errorMessage.id === 6 && <ErrorMessage message = {errorMessage.message}/>}
                 <View style={commonStyles.littleButtonView}>
                     <TouchableOpacity style={commonStyles.littleButton} onPress={(() => { navigation.navigate("Initial") })}>
                         <Text style={commonStyles.buttonText}>Voltar</Text>
