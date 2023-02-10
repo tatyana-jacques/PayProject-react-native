@@ -85,7 +85,7 @@
 <br>
 
 <div align="center">
-    <img  src="assets/list-payments.jpg" width = 300px>
+    <img  src="assets/list-payments.png" width = 300px>
 </div>
 
 <br>
