@@ -80,7 +80,7 @@
 
 <br>
 
-<p>Payment confirmation screen. You can confirm or cancel</p>
+<p>Payment confirmation screen. You can confirm or cancel.</p>
 
 <br>
 
