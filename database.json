@@ -151,6 +151,25 @@
       },
       "billing_day": "2022-09-22",
       "id": 8
+    },
+    {
+      "fullname": "Rita Lee",
+      "contact": "48555555555",
+      "email": "rita@senai.com",
+      "number_rg": "7866666",
+      "cpf": "66666666666",
+      "password": "rita",
+      "address": {
+        "cep": "88037540",
+        "street": "Rua Folhas Verdes",
+        "city": "Florianópolis",
+        "state": "SC",
+        "region": "Córrego Grande",
+        "number": "666",
+        "complement": "Ap"
+      },
+      "billing_day": "2023-02-24",
+      "id": 9
     }
   ],
   "invoices": [
@@ -279,6 +298,33 @@
       "user_id": 2,
       "cashback": "67.04",
       "id": 14
+    },
+    {
+      "recipient": "Ruido Rosa",
+      "amount": 300.55,
+      "date": "10/02/2023 09:49",
+      "code": 2836039,
+      "user_id": 9,
+      "cashback": "30.06",
+      "id": 15
+    },
+    {
+      "recipient": "DevInHouse Ltda",
+      "amount": 103.23,
+      "date": "10/02/2023 09:49",
+      "code": 984720495,
+      "user_id": 9,
+      "cashback": "10.32",
+      "id": 16
+    },
+    {
+      "recipient": "DevInHouse Ltda",
+      "amount": 103.23,
+      "date": "10/02/2023 09:55",
+      "code": 984720495,
+      "user_id": 2,
+      "cashback": "10.32",
+      "id": 17
     }
   ],
   "debts": [
